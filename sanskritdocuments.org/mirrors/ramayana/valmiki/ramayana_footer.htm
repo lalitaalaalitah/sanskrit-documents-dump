@@ -1,0 +1,144 @@
+<html>
+
+<head>
+<title>Ramayana: Presentation Mode</title>
+<!------------------------------------------------------------------------------>
+<script LANGUAGE="JavaScript1.2">
+<!------------------------------------------------------------------------------>
+<!-- changed november 2017
+//------------------------------------------------------------------------------
+//	global data
+
+var rTYPE = new Array (				//	3 filetypes for the kanda-s
+		 ".html"
+		,".htm"
+		,".txt"
+		,".htm"
+		,".pdf"
+		,".ps"
+		)
+
+var rDIR = new Array (				//	the filetypes' directories - 
+		 "../utf/"				//	relative to where this html file lives
+		,"../roman/"				//	
+		,"../txt/"				//	
+		,"../xdvng/"				//	
+		,"../pdf/"				//	
+		,"../ps/"				//	
+		)
+
+var rDOC = new Array (				//	the *seven kanda-s
+		 "1_balakanda_"			//	these names are used to format
+		,"2_ayodhyakanda_"		//	the url name, e.g.
+		,"3_aranyakanda_"			//	"1_balakanda_1.htm"
+		,"4_kishkindhakanda_"		//	by function "GoToSlide"
+		,"5_sundarakanda_"		//	using the user inputs
+		,"6_yuddhakanda_"			//	fileTYPEm, Kanda, Chapter on the <form>
+		,"7_uttarakanda_"
+		)
+
+var rMAX = new Array (				//	maximum chapters for each of the kanda-s
+		 76
+		,111
+		,71
+		,66
+		,66
+		,116
+		,100
+		)
+
+var rDOCptr = 0 ;					//	default start kanda is number #0 (balakanda)
+var rPAGEptr = 1 ;				//	default start page is #1
+var rFILEtype = 0 ;				//	default file format & directory is #0 (xdvng)
+
+//------------------------------------------------------------------------------
+//	functions start here
+
+function resetALL ()				//	reset all form fields & JS vars to defaults
+{ 
+	document.rFORM.Kanda.selectedIndex = 0;
+	rDOCptr = 0 ;
+	document.rFORM.fileTYPE.selectedIndex = 0;
+	rFILEtype = 0 ;
+	document.rFORM.Chapter.value = 1;
+}
+
+function showMAX ()				//	display the maximum chapter for current kanda
+{ 
+	document.rFORM.max.value = rMAX[rDOCptr];
+}
+
+function Kandachange ()				//	form field "kanda" has been changed by user
+{ 							//	display changed maximum
+
+	rDOCptr = document.rFORM.Kanda.selectedIndex;
+	showMAX ();
+} 
+
+function fileTYPEchange ()			//	form field filetype has been changed by user
+{ 
+	rFILEtype = document.rFORM.fileTYPE.selectedIndex;
+} 
+
+function GoToSlide ()				//	goto the slide/chapter selected by user
+
+{
+	document.rFORM.max.value = rMAX[rDOCptr];
+	rPAGEptr = document.rFORM.Chapter.value;
+	if	( rPAGEptr < 1 || rPAGEptr > rMAX[rDOCptr] )	//	check chapter number range
+		{								//	for current kanda
+		alert('Invalid - Please enter Chapter 1 -> ' + rMAX[rDOCptr] )
+		}
+	else
+		{										//	chapter number ok - display in 
+		NextUrl = rDOC[rDOCptr] + rPAGEptr + rTYPE[rFILEtype];	//	target frame "main"
+		parent.frames.main.location = rDIR[rFILEtype] + NextUrl;
+		}
+}
+
+//SCRIPT_END -->
+</script>
+
+
+<base target="main">
+<meta name="Microsoft Theme" content="none, default">
+</head>
+<!------------------------------------------------------------------------------>
+<!-- form for user inputs ------------------------------------------------------>
+
+<body>
+
+<form name="rFORM" onsubmit="GoToSlide(); return false">
+  <div align="center"><center><table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="100%"><div align="center"><center><p><select NAME="fileTYPE" onChange="fileTYPEchange()" size="1">
+        <option VALUE="utf">devanagari </option>
+        <option VALUE="roman">transliteration </option>
+        <option VALUE="itrans">itrans </option>
+        <option VALUE="xdvng">xdvng </option>
+        <option VALUE="pdf">pdf </option>
+        <option VALUE="ps">ps </option>
+      </select> <select NAME="Kanda" onChange="Kandachange()" size="1">
+        <option VALUE="balakanda">balakanda </option>
+        <option VALUE="ayodhyakanda">ayodhyakanda </option>
+        <option VALUE="aranyakakanda">aranyakanda </option>
+        <option VALUE="kishkindhakanda">kishkindhakanda </option>
+        <option VALUE="sundarakanda">sundarakanda </option>
+        <option VALUE="yuddhakanda">yuddhakanda </option>
+        <option VALUE="uttarakanda">uttarakanda </option>
+      </select> <input name="Chapter" TYPE="text" SIZE="3">of: <input name="max" TYPE="text" SIZE="3"> <br>
+<!-- go, previous, end, next,reset buttons ------------------------------------><!-- if want images instead of buttons need to change here                   -->      <font size="-0"><b><input TYPE="button" VALUE="  GO&nbsp;" onClick="GoToSlide()"> <input TYPE="button" VALUE="&nbsp;«&nbsp;" onClick="if(document.rFORM.Chapter.value&gt;1){document.rFORM.Chapter.value--};GoToSlide()">
+      <input TYPE="button" VALUE="&nbsp;&nbsp;&#26;&nbsp;&nbsp;" onClick="parent.frames.main.location='ramayana.htm'"> <input TYPE="button" VALUE="&nbsp;»&nbsp;" onClick="{document.rFORM.Chapter.value++};GoToSlide()"> <input TYPE="button" VALUE="RESET" onClick="resetALL()"> </b></font></td>
+    </tr>
+  </table>
+  </center></div>
+</form>
+<!-- initial states -------------------------------------------------------->
+<script LANGUAGE="JavaScript1.2">
+document.rFORM.Chapter.value = rPAGEptr;
+resetALL ();
+showMAX ();
+</script>
+
+</body>
+</html>

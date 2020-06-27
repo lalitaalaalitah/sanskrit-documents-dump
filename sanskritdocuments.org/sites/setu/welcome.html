@@ -1,0 +1,256 @@
+<html>
+<body>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<title>bhAShamitraM</title>
+<center>
+<h1>SETU - saMskR^itaM-English Translation Utility</h1>
+</center>
+<!--
+<a href="http://www.aczoom.com">ITRANS Text to devanAgarI</a>
+<br>
+-->
+<a href="#itrans_code">ITRANS Coding Scheme</a>
+<br>
+<img src="welcome.jpg">
+<br>
+This software is dedicated to those who believe that saMskR^itaM should regain its currency in ordinary social intercourse as in ancient times. saMskR^itaM is undoubtedly a cementing force to bend all our energies in unison to build a great India.
+<br><br>
+It is a sad fact in India that those who know saMskR^itaM are not acquainted with moderm mathematics and science. On the other hand, those young Indians, who learn modern mathematics and science in our Universities, have little knowledge of saMskR^itaM. Although there is a vast body of literature in saMskR^itaM covering mathematics and science, it is still essential to study and teach modern Western mathematics and scientific methodology.
+<br><br>
+The Internet is a cornucopia of knowledge, an invisible, omnipresent, easily-accessible library. Authoritative information on any scientific subject can be obtained from it. This vast store-house of knowledge must be translated into saMskR^itaM to re-vitalize it. It is hoped that this Translation Tool will be of some service to those dedicated and dauntless few who have taken it upon themselves to do this noble, but admittedly thankless, job of translation.
+<br><br>
+The main screen looks like this:
+<br><br>
+<img src="main_screen.jpg">
+<br><br>
+This software is to be used by those who have sufficient knowledge of and command over both English and saMskr^itaM. It is meant to joggle their truant memory by suggesting an appropriate word/phrase in saMskR^itaM for one in English. To meet this end an English-saMskR^itaM Dictionary Database (ESDDB) is part of this software. Creating and maintaining this database demands a huge amount of labour - far beyond the capacity of one individual. Much less effort is needed for developing and maintaining the software itself.
+<br><br>
+<center><h2>How SETU can help</h2></center>
+<ol>
+
+<li>
+Click the Browse button to pop open an Open File Dialog box to choose a file containing the English text to be translated into saMskR^itaM. The chosen file is read in and the EnGlish textEdit box (top left) is filled in. 
+<br><br>
+This textBox can get focus by Alt-G.
+<br><br>
+This textEdit box must be treated as "read-only", although, to enable cursor movements, programmatically it is not. Whatever changes are made to this text, by mistake or otherwise, are lost because the text is never written back to the disk.
+</li>
+
+<li>
+<a href="welcome.html#itrans_code">ITRANS coding scheme</a> is used in this software for creating saMskR^itaM texts.
+<br><br>
+Clicking on button ScheMe will display the ITRANS Encoding Scheme.
+<br><br>
+Clicking Alt-I gives focus to the ITRANS textEdit box (bottom left) in which the translated saMskR^itaM text is to be keyed.
+</li>
+
+<li>
+Highlight a word or move the cursor within a word in the EnGlish textEdit box and click LookUp button. The English word is copied to the Key lineEdit box (top right), the suggested saMskR^itaM word/phrase (if available) is fetched from the ESDDB and placed in the SAmskrit textEdit box (middle right).
+<br><br>
+If a synonym is available it is displayed in the SYnonym lineEdit box (bottom right). You can access the SYnonym lineEdit box with Alt-Y. Move the cursor into a synonym, press QV button, and the record of the synonym, if available, will be fetched from the ESDDB and displayed.
+<br><br>
+If the English word/phrase is not available, then the user has to update the ESDDB - as explained later - from reference materials available to her/him.
+</li>
+
+<li>
+The File/Open/Save/Save As menu items have the usual meaning and all of them refer only to the ITRANS text in the ITRANS textEdit box. The ITRANS file is usually a .txt file.
+<br><br>
+All the Edit menu items act only on the ITRANS text in the ITRANS textEdit box.
+</li>
+
+<li>
+Clicking on Help/Contents will display this HTML Help page.
+</li>
+
+<li>
+The ESDDB can also be operated independently of any text in either the EnGlish or ITRANS textEdit boxes.
+<ol type=a>
+
+<li>
+Key an English word/phrase into the Key lineEdit box. 
+<br><br>
+Alt-K gives focus to this control and selects all text in it.
+</li>
+<li>
+Key the appropriate saMskR^itaM word/phrase/meaning, using ITRANS, into the SAmskrit textEdit box.
+<br><br>
+Alt-A gives focus to this control. Alt-C clears this control and the SYnonym lineEdit box.
+<br><br>
+English synonyms can be keyed into the SYnonym lineEdit box. By highlighting such a word or moving the cursor into it and clicking on the button QV (qui vide) will fetch the record (if available) of the synonym from the ESDDB and display it.
+</li>
+
+<li>
+The buttons FiRst, Last, Next, Prev, Search, SaVe and Delete opearate on the records of the ESDDB.
+<br><br>
+The SaVe button adds/replaces a record in the ESDDB, using the text in the Key lineEdit box as key and the text in the SAmskrit textEdit box and in the SYnonym lineEdit box (if any) as data.
+<br><br>
+The SaVe button is inoperative if the Read Only check box is checked.
+<br><br>
+The Search button fetches the first matching record from the ESDDB, using the (partial) text in the Key lineEdit box.
+<br><br>
+The Delete button deletes the matching record, if found, from the ESDDB.
+<br><br>
+The Delete button is inoperative if the Read Only check box is checked.
+</li>
+
+</ol>
+ 
+</li>
+
+</ol>
+<br><br>
+This software has been developed using Qt Designer 3.3.4 of  Trolltech and Berkeley DB 4.2 of Sleepycat Software as the database engine, under PCQLinux 2005 (= RHL 9).
+<br><br>
+References:
+<ol>
+<li>
+The Student's English-Sanskrit Dictionary by Vaman Shivram Apte, Motilal Banarsidass, Delhi, India. (The ESDDB is based on this. If this entire book is put in the ESDDB, then SETU will indeed be an excellent self-contained, desk-top tool for translators. This requires a considerable amount of voluntary labour.)
+</li>
+<li>
+The Student's Sanskrit-English Dictionary by Vaman Sivram Apte, Motilal Banarsidass, Delhi, India.
+</li>
+<li>
+The Student's Guide To Sanskrit Compositio by Vaman Shivram apte, Choukhamba Sanskrit Series Office, Varanasi, India.
+</li>
+<li>
+A Higher Sanskrit Grammar by M R Kale, Motilal Banarsidass, Delhi, India.
+</li>
+<li>
+Glossary of Mathematics, Commission for Scientific & Technical Terminology, Min. of HRD, Deptt. of Education, Govt. of India, New Delhi.
+</li>
+<li>
+Definitional Dictionary of Computer Science, Commission for Scientific & Technical Terminology, Min. of HRD, Deptt. of Education, Govt. of India, New Delhi.
+</li>
+</ol>
+<center><a name="itrans_code">
+<h1>ITRANS 5.1 Encoding Scheme for Devanagari </h1>
+Copyright © 1991-97 Avinash Chopde, avinash@acm.org. All rights reserved.</a>
+</center>
+<br><br>
+
+<font size="+2">
+<pre>
+
+Vowels:
+
+a	aa / A	i	ii / I	u	uu / U
+R^i	R^I	L^i	L^I
+e	ai	o	au	aM	aH
+
+Consonants:
+
+k	kh	g	gh	~N
+ch	Ch	j	jh	~n
+T	Th	D	Dh	N
+t	th	d	dh	n
+p	ph	b	bh	m
+y	r	l	v / w
+sh	Sh	s	h	L
+x / kSh / kS		GY / j~n / dny
+
+
+R 	(for marathi half-RA)
+L  	(marathi LLA)
+
+Consonants with a nukta (dot) under them (mainly for Urdu devanagari):
+
+k  with a dot:      	q
+kh with a dot:      	K
+g  with a dot:      	G
+j  with a dot:      	z
+p  with a dot:      	f
+D  with a dot:      	.D
+Dh with a dot:	.Dh
+ph with a dot	f
+
+Specials/Accents:
+
+Anusvara:	.n / M / .m	(dot on top of previous consonant/vowel)
+Avagraha:	.a	(apostrophe; `S' like symbol basically to replace a after o)
+Ardhachandra:	.c	(for vowel sound as in english words `cat' or `talk')
+Chandra-Bindu:	.N	(chandra-bindu on top of previous letter)
+	{\m+}	chandra-bindu with virama
+Halant:	.h	(to get half-form of the consonant - no vowel - virama)
+Ra ligature:	^r	(top curve as in ii to get r sound, half r)
+(^r put after the intended consonant, e.g u{dhva}^r)
+
+Visarga:	H	(visarga - looks like a colon character)
+Om:	OM, AUM	(Om symbol)
+Svaras:	\`	udaatta (upper svara) (`= 096; not apostrophe)
+	\``	double udaatta (double upper svara)
+	\_	anudaatta (lower svara) 
+
+Following older codes are also accepted:
+
+kSh	(= ksh)
+~n	(= JN)
+~N	(= N^)
+dny	(= GY)
+^r	(= .r)
+Sh	(= shh = Z = S)
+Ch	(= chh)
+c	(= ch)
+
+
+
+To prevent the formation of ligatures you may insert {} between characters. E.g. kla converts to the kla ligature k{}la converts to half ka + la.
+For more details on ITRANS 5.1 see http://www.aczone.com/itrans.html
+</pre>
+
+<br>
+Abbreviations used in the Dictionary:
+<ul>
+<li>A Atmanepada
+<li>a. adjective
+<li>abl. ablative
+<li>acc. accusative
+<li>adv. adverb
+<li>arith. arithmetic
+<li>bah. bahuvrIhiH
+<li>c. causal
+<li>circum. circumlocution
+<li>comp. compound
+<li>conj. conjunction
+<li>d. denominative
+<li>dat. dative
+<li>deriv. derivative
+<li>desid. desiderative
+<li>ex. expressed
+<li>f. feminine
+<li>fig. figurative
+<li>freq. frequentative
+<li>gen. genitive, generally (when followed by ex.)
+<li>gen. abs. genitive absolute
+<li>ind. indeclinable
+<li>inf. infinitive
+<li>instr. instrumental
+<li>interj. interjection
+<li>lit. literal, literally
+<li>loc. locative
+<li>loc. abs. locative absolute
+<li>m. masculine
+<li>math. mathematics
+<li>n. neuter
+<li>nom. nominative
+<li>p. parasmaipada
+<li>part. participle
+<li>pass. passive
+<li>pot. potential
+<li>pot. pass. part. potential passive participle
+<li>pl. plural
+<li>pr. prefixed
+<li>prep. preposition
+<li>pron. pronoun
+<li>pron. a. pronominal adjective
+<li>q. v. quod vide
+<li>s. substantive
+<li>sim. comp. similar compound
+<li>tat. tatpuruSha
+<li>u. ubhayapada (Atmanepada and parasmaipada)
+<li>v. verb (transitive and intransitive)
+<li>v.i. verb intransitive
+<li>voc. vocative
+<li>v.t. verb transitive
+</ul>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<html>
+<head>
+<title> Sanskrit Dictionary Additions </title>
+</head>
+
+<body bgcolor="#ffffff">
+
+<center><h3> Sanskrit Dictionary add </h3></center>
+<br>
+
+Enter the list of words (with meanings) in the format described
+below. Please try to observe the following format.
+<ol>
+<li> Each entry should fit in a single line.
+<li> The first word on each line is the Sanskrit word, followed by an
+'=' sign, followed by the meaning in English/Sanskrit.
+<li> Put spaces around '='
+</ol>
+
+Consult the <a href="itrans.html"> ITRANS transliteration map </a> if
+necessary. A sample input could be: <p>
+
+<pre>
+antaraatmaa = (m) the inner self, residing in the heart
+tR^ishhNaa = (f) desire
+vakraa = (adj) curved, crooked
+</pre>
+
+<hr><p>
+
+<form method=POST
+action="web-add.cgi">
+
+Input: <textarea name=wordlist rows=15 cols=60 align="center"
+		 value=""> </textarea> <p>
+
+Notify errors ?
+<select name=notify>
+<option value="0" selected> No
+<option value="1"> Yes
+</select> <p>
+
+If duplicate, override definitions in the dictionary ?
+<select name=override>
+<option value="0" selected> No
+<option value="1"> Yes (notify must be enabled)
+</select> <p>
+
+Your email address: <input name=submitter size=40 value=""> <p>
+Press this button to submit your input: <input type=submit value="submit"> <p>
+To clear the input, press this button: <input type=reset value="clear"> <p
+
+<b> <i> Additions will take some time (~15-30 seconds). So please be
+patient. </i></b><p>
+
+</form>
+
+<pre>
+</pre>
+<hr>
+<i> <a href="../index.html"> Back to Sanskrit Homepage </a>
+</i>
+
+</body>
+</html>

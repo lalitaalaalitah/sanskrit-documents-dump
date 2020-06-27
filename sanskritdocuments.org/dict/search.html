@@ -1,0 +1,50 @@
+<html>
+<head>
+<title> Sanskrit Dictionary search </title>
+</head>
+<body bgcolor="#ffffff">
+
+<center><h3> Sanskrit Dictionary search </h3></center>
+<br>
+
+<form method=POST action="../cgi-bin/web-search.cgi">
+<b>
+<input type=submit value="Search for">
+<input name=word size=25 value="">
+using:
+<select name=searchtype>
+<option value="1"> Exact
+<option value="2" selected> Prefix
+<option value="3"> Substring
+<option value="4"> English
+</select>
+Search
+</b>
+</form>
+
+<hr>
+All sanskrit words must be in ITRANS format. For more information
+about ITRANS mapping, please see <a href="itrans.html"> ITRANS
+transliteration map </a>.
+
+<dl>
+<dt> <b> Exact search </b>
+<dd> Matches the sanskrit word exactly as given. Use this if you are
+sure of the transliteration (or the word occurs commonly as a prefix) <p>
+<dt> <b> Prefix search </b>
+<dd> Matches all sanskrit words which begin with this prefix. <p>
+<dt> <b> Substring search </b>
+<dd> Matches all sanskrit words which contain the given input as their
+substring. <p>
+<dt> <b> English search </b>
+<dd> Get all sanskrit words whose meaning field contains the given
+pattern. <p>
+</dl>
+
+<p>
+<hr>
+<i> <a href="../index.html"> Back to Sanskrit Homepage </a>
+</i>
+</body>
+</html>
+

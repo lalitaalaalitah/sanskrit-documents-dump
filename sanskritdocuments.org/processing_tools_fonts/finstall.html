@@ -1,0 +1,289 @@
+<HTML>
+<HEAD>
+  <TITLE>ITRANS Font Install Instructions (HTML display)</TITLE>
+
+  <META Name="description" Content="ITRANS 5.2 - Freeware UNIX/MS-DOS
+        Indian Language Print package that works as a pre-processor for
+	TeX or PostScript.">
+
+  <META Name="keywords" Content="ITRANS, Indian Languages, Indian Scripts,
+        Romanized Devanagari, Bengali, Gujarati, Devanagari">
+
+  <LINK REL="shortcut icon" HREF="/favicon.ico">
+  <LINK REV="made" HREF="mailto:avinash@acm.org">
+
+</HEAD>
+
+<BODY TEXT="#000000"
+      BGCOLOR="#FFFFFF"
+      LINK="#00ff00" VLINK="#22aa22" ALINK="#C0F0FF">
+
+<!-- ================================ trailer ========================== -->
+
+<HR SIZE="3" WIDTH="100%" NOSHADE>
+<P>
+
+<!-- =============================== end trailer ========================= -->
+<CENTER>
+  <H1>
+  <FONT SIZE="+2">ITRANS Font Install Instructions (HTML display)</FONT>
+  <BR>
+  <FONT SIZE="-1">ITRANS 5.2</FONT> <BR>
+  </H1>
+</CENTER>
+
+<HR SIZE="3" WIDTH="70%">
+
+<P>
+
+<!-- ============================================================ -->
+<H3>
+  Installing fonts for X11R6/PC/Mac
+</H3>
+
+<P>
+All these fonts are present in the ITRANS
+<b>"lib/fonts"</b> directory.
+So, to get these fonts, you've to first download the ITRANS 5.2 package.
+
+<P>
+This section explains how to install the TrueType or Type1 fonts so that 
+Itrans output can be viewed directly using WWW browsers such as Netscape
+3.x.
+
+<P>
+If you know how to install fonts on your system, you may not need to
+read the detailed instructions here, it may be enough just to find the
+names of the font files listed here, and then install the font on your
+system.
+
+<P>
+<H3>
+Xdvng font files (Devanagari):
+</H3>
+
+<P>
+<PRE>
+    X11R6            PC (Windows)     Mac
+    ------------     ------------     ------------
+    xdvng.pfb        xdvng.ttf        xdvng.hqx
+</PRE>
+
+<P>
+<H3>
+ItxGuj font files (Gujarati):
+</H3>
+
+<P>
+<PRE>
+    X11R6            PC (Windows)     Mac
+    ------------     ------------     ------------
+    itxguj.pfb       itxguj.ttf       itxguj.hqx
+</PRE>
+
+<P>
+<H3>
+ItxBeng font files (Bengali):
+</H3>
+
+<P>
+<PRE>
+    X11R6            PC (Windows)     Mac
+    ------------     ------------     ------------
+    itxbeng.pfb      itxbeng.ttf      itxbeng.hqx
+</PRE>
+
+<P>
+<H3>
+CSUtopia font files (Romanized Devanagari):
+</H3>
+
+<PRE>
+    X11R6            PC (Windows)         Mac
+    ------------     ------------         ------------
+    putb8iX.pfb      (not available yet) (not available yet)
+    putbi8iX.pfb     (not available yet) (not available yet)
+    putr8iX.pfb      (not available yet) (not available yet)
+    putri8iX.pfb     (not available yet) (not available yet)
+
+Washinton Roman Indic font files:
+
+    X11R6            PC (Windows)         Mac
+    ------------     ------------         ------------
+    n/a	             wnribx.ttf           n/a
+    n/a	             wnrir.ttf            n/a
+    n/a	             wnriti.ttf           n/a
+</PRE>
+
+<P>
+<HR SIZE="1" WIDTH="70%">
+<P>
+
+<IMG SRC="../images/ball_green_icon.gif" ALT="[[*]]" ALIGN=left
+ WIDTH=14 HEIGHT=14 HSPACE=10>
+<strong>Mac</strong> instructions.
+
+<P>
+The Mac font is available as a .hqx file, which is an encoded form of the 
+font suitcase.
+
+<P>
+<UL>
+  <LI> Decode the .hqx file. You can do this using the DeHQX application,
+  or the Stuffit-Expander application.
+  <LI> Exit all applications (or, atleast exit Netscape).
+  <LI> Copy the font file to your system folder.
+  <LI> Start Netscape, and vist the sample page listed at the top of this
+  page.
+</UL>
+
+<P>
+<HR SIZE="1" WIDTH="70%">
+<P>
+
+<IMG SRC="../images/ball_green_icon.gif" ALT="[[*]]" ALIGN=left
+ WIDTH=14 HEIGHT=14 HSPACE=10>
+<strong>PC (Windows)</strong> instructions.
+
+<P>
+The PC font is available as a TrueType font file (.ttf).
+
+<P>
+<UL>
+  <LI> Exit all applications (or, atleast exit Netscape).
+  <LI> Open up the Fonts section of the Control Panels.
+  <LI> Select the Add font command, and add the .ttf file.
+  <LI> Start Netscape, and vist the sample page listed at the top of this
+  page.
+</UL>
+
+<P>
+<HR SIZE="1" WIDTH="70%">
+<P>
+
+<IMG SRC="../images/ball_green_icon.gif" ALT="[[*]]" ALIGN=left
+ WIDTH=14 HEIGHT=14 HSPACE=10>
+<strong>X11R6</strong> instructions.
+
+<P>
+Unix systems running X11R6 now support PostScript Type 1 fonts.
+
+<P>
+Technical issues:<BR>
+[Feel free to skip the next few paragraphs and jump directly to the list
+of steps required to install Type 1 fonts for X11R6.
+The following paragraphs just provide some technical
+background on all the tricks that had to be followed to get the font
+working under X11R6 and to make it easy to browse documents using these
+fonts on the WWW.]
+
+<P>
+I discovered a problem with the Type 1 rasterizer of X11R6, it seems
+that it just ignores the encoding defined in the font, and always
+accesses the font assuming it is ISOLatin1 encoded.
+
+<P>
+Clearly, these Indic fonts are in a fontspecific encoding, they are
+definitely not in the Latin1 encoding.
+We have to fool X11R6 into thinking that way, so the fonts are
+created using Latin1 encoding. 
+That is with respect to font creation, for font installion, we still have
+a choice on how to choose the XLFD name of the font.
+To be correct, we should use a XLFD name that identifies these fonts 
+as having a "fontspecific" encoding. But if we do this, then under
+Netscape, we have to select the "User Defined" encoding each time we
+visit a page using these fonts.
+So, we have to provide yet another fake artifact - we name the font two
+ways: one is the correct fontspecific name (so that the user can select
+the "User Defined" document encoding option and have everything displayed
+correctly), and another name that defines the font as a iso8859-1 encoded
+font. The iso8859-1 encoding is a fake definition for the regions where
+Latin1 is the default encoding (North America, most parts of Europe,
+etc). If you are in a region where the default encoding is different from
+iso8859-1, you should change the iso8859-1 words in the following list of
+instructions to the XLFD name of your default encoding.
+
+<P>
+Anyway, here are the steps to install a Type 1 font under X11R6:
+
+<P>
+<UL>
+  <LI> Copy all the .pfb font files to a new empty directory that is
+  readble on the machine that is running the X11R6 display server.
+  <LI> Exit all applications (or, atleast exit Netscape).
+  <LI> Create a <b>fonts.scale</b> file, you can view the sample
+  FONTS.SCALE file present in the ITRANS/lib directory of the ITRANS
+  archive, or use the following lines (you
+    need to copy
+    only those lines that correspond to the .pfb files you are interested
+    in):
+<PRE>
+</PRE>
+14
+putb8iX.pfb -itrans-csutopia-bold-r-normal--0-0-0-0-p-0-itrans-fontspecific
+putbi8iX.pfb -itrans-csutopia-bold-i-normal--0-0-0-0-p-0-itrans-fontspecific
+putr8iX.pfb -itrans-csutopia-medium-r-normal--0-0-0-0-p-0-itrans-fontspecific
+putri8iX.pfb -itrans-csutopia-medium-i-normal--0-0-0-0-p-0-itrans-fontspecific
+itxguj.pfb -itrans-itxguj-regular-r-normal--0-0-0-0-p-0-itrans-fontspecific
+itxbeng.pfb -itrans-itxbeng-regular-r-normal--0-0-0-0-p-0-itrans-fontspecific
+xdvng.pfb -itrans-xdvng-regular-r-normal--0-0-0-0-p-0-itrans-fontspecific
+putb8iX.pfb -itrans-csutopia-bold-r-normal--0-0-0-0-p-0-iso8859-1
+putbi8iX.pfb -itrans-csutopia-bold-i-normal--0-0-0-0-p-0-iso8859-1
+putr8iX.pfb -itrans-csutopia-medium-r-normal--0-0-0-0-p-0-iso8859-1
+putri8iX.pfb -itrans-csutopia-medium-i-normal--0-0-0-0-p-0-iso8859-1
+itxguj.pfb -itrans-itxguj-regular-r-normal--0-0-0-0-p-0-iso8859-1
+itxbeng.pfb -itrans-itxbeng-regular-r-normal--0-0-0-0-p-0-iso8859-1
+xdvng.pfb -itrans-xdvng-regular-r-normal--0-0-0-0-p-0-iso8859-1
+  <LI> Run the "mkfontdir" command in the above directory. This will
+  generate a fonts.dir file.
+  <LI> Add the directory to your X11 display server with this command:
+    <PRE>
+    xset fp+ &lt;your font directory name&gt;
+    </PRE>
+  <LI> Now, if you do a "xlsfonts" command, you should see the names of
+    the fonts you added.
+    To test if the font is working, try this command: <BR>
+     "xfd -fn &lt;full font name&gt;" <BR>
+     where the full X11 font name is used. This should display all the
+     characters in the font.
+  <LI> Start Netscape, and vist the sample page listed at the top of this
+  page.
+</UL>
+
+<P>
+<H4>
+Classical Sanskrit (Roman) encoded fonts issues:
+</H4>
+
+<P>
+<b>PC</b> platform note: As of Dec 96, I could not get the CSUtopia TrueType
+fonts to work on PC Windows systems. So, instead of CSUtopia, I'm using the
+Washington Roman Indic font for displaying the text in Romanized Devanagari
+on PC platforms (Windows 3.1/95/NT).
+Both these fonts are in the Classical Sanskrit (Roman) encoding, so are
+compatible with each other.
+
+<P>
+<b>Mac</b> platform note: As of Dec 96, no CS/CSX font is available, so this
+text cannot be viewed correctly on a Mac.
+
+<P>
+CSUtopia works on <b>Unix/X11R6</b> Windowing systems and
+<b>PostScript</b> printers only.
+
+<!-- ================================ trailer ========================== -->
+<!-- =============================== end trailer ========================= -->
+
+<HR>
+<P>
+<ADDRESS>
+<P align=center>
+<B>Copyright &copy; 1995-98 Avinash Chopde, <A href="mailto:avinash@acm.org">
+avinash@acm.org</A>. All rights reserved.</B>
+
+<P align=center>
+<FONT SIZE="-2">Page URL: http://www.aczoom.com/itrans/finstall.html</FONT>
+</ADDRESS>
+
+</BODY></HTML>
+

@@ -1,0 +1,937 @@
+<html>
+<head>
+<title>Site Map</title>
+<!-- <description>Xtreeme SiteXpert-generated Site Map file</description> -->
+<SCRIPT LANGUAGE="JavaScript">
+<!-- JavaScript
+/*
+Find In Page Script-
+By Mike Hall (MHall75819@aol.com)
+Permission granted to Dynamicdrive.com to feature script in archive
+For full source code, visit http://dynamicdrive.com
+*/
+
+var NS4 = (document.layers);    // Which browser?
+var IE4 = (document.all);
+
+var win = window;    // window to search.
+var n   = 0;
+
+// Check which Browser
+
+function check_browser() {
+if (!IE4) {
+alert('The Site was designed primarily for Internet Explorer' + '\n\n' + 'You will not be able to search the Sitemap.' + '\n\n' + ' You will be able to search the site itself')
+win.location = "nssitemap.html";
+}else{
+onCollapseAll();
+}
+}
+
+function findInPage(str) {
+onExpandAll();
+  var txt, i, found;
+
+  if (str == "")
+    return false;
+  if (NS4) {
+
+    // Look for match starting at the current point. If not found,
+//rewind
+    // back to the first match.
+
+    if (!win.find(str))
+      while(win.find(str, false, true))
+        n++;
+    else
+      n++;
+
+    // If not found in either direction, give message.
+
+    if (n == 0)
+      alert("Not found.");
+  }
+
+  if (IE4) {
+    txt = win.document.body.createTextRange();
+
+    // Find the nth match from the top of the page.
+
+    for (i = 0; i <= n && (found = txt.findText(str)) != false; i++) {
+      txt.moveStart("character", 1);
+      txt.moveEnd("textedit");
+    }
+
+    // If found, mark it and scroll it into view.
+
+    if (found) {
+      txt.moveStart("character", -1);
+      txt.findText(str);
+      txt.select();
+      txt.scrollIntoView();
+      n++;
+    }
+
+    // Otherwise, start over at the top of the page and find first match.
+
+    else {
+      if (n > 0) {
+        n = 0;
+        findInPage(str);
+      }
+
+      // Not found anywhere, give message.
+
+      else
+        alert("I could not find " +str+ ".");
+    }
+  }
+
+  return false;
+}
+
+// - JavaScript - -->
+</script>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var version = parseInt (navigator.appVersion) ;
+NS4 = (document.layers) ? true : false ;
+IE4 = ((document.all) && (version >= 4)) ? true : false ;
+ver4 = (NS4 || IE4) ? true : false ;
+
+var firstItem = 0 ;
+var lastItem ;
+if (NS4)
+	lastItem = document.layers.length - 1 ;
+if (IE4)
+	lastItem = document.all.tags ("DIV").length - 1 ;
+
+function onClicked (el) {}
+function onExpandAll () {}
+function onCollapseAll () {}
+
+if (ver4)
+  {
+  with (document)
+	{
+	write("<STYLE TYPE='text/css'>");
+	write (".SXLP0,.SXP0 {}") ;
+	write (".SXLR,.SXR {}") ;
+	write (".SXLP1,.SXP1 {}") ;
+	write (".SXLC0,.SXC0 {}") ;
+	write (".SXLP2,.SXP2 {}") ;
+	write (".SXLC1,.SXC1 {}") ;
+	if (NS4)
+		{
+		write (".below {position:absolute}") ;
+		write (".SXP0 {position:absolute; visibility:hidden}") ;
+		write (".SXR {position:absolute; visibility:hidden}") ;
+		write (".SXP1 {position:absolute; visibility:hidden}") ;
+		write (".SXC0 {position:absolute; visibility:hidden}") ;
+		write (".SXP2 {position:absolute; visibility:hidden}") ;
+		write (".SXC1 {position:absolute; visibility:hidden}") ;
+		}
+	  else
+		{
+		write (".tbl {width='100%'}") ;
+		}
+
+	write("</STYLE>");
+	}
+  }
+//-->
+</SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript1.2">
+<!--
+var bOpenIcon = false ;
+function getIndent (theItem)
+	{
+	end = theItem.id.indexOf ("SXE") ;
+	if (end == -1)
+		return -1 ;
+	return parseInt (theItem.id.substring (1, end)) ;
+	}
+
+function getIndexNS (el)
+	{
+	ind = -1 ;
+	for (i = 0 ; i < document.layers.length ; i++)
+		{
+		var theItem = document.layers [i] ;
+		if (theItem == el)
+			{
+			ind = i ;
+			break ;
+			}
+		}
+	return ind ;
+	}
+
+function getIndexIE (el)
+	{
+	ind = -1 ;
+	tempColl = document.all.tags ("DIV") ;
+	for (i = 0 ; i < tempColl.length ; i++)
+		{
+		var theItem = tempColl (i) ;
+		if (theItem == el)
+			{
+			ind = i ;
+			break ;
+			}
+		}
+	return ind ;
+	}
+
+function setPosition ()
+	{
+	nextY = document.layers [firstItem].pageY + document.layers [firstItem].document.height ;
+	for (i = firstItem + 1 ; i <= lastItem && i < document.layers.length ; i++)
+		{
+		theItem = document.layers [i] ;
+		if (theItem.visibility != "hide")
+			{
+			theItem.pageY = nextY ;
+			nextY += theItem.document.height ;
+			}
+		}
+	bel = document.layers["below"] ;
+	if (bel)
+		bel.pageY = nextY ;
+	}
+
+function initialize ()
+	{
+	if (NS4)
+		{
+		for (i = 0 ; i < document.layers.length ; i++)
+			{
+			theItem = document.layers [i] ;
+			if ((theItem.id.indexOf ("SXC") != -1) || (getIndent (theItem) > 0))
+				theItem.visibility = "hide" ;
+			}
+		setPosition () ;
+		}
+	  else
+		{
+		tempColl = document.all.tags ("DIV") ;
+		for (i = 0 ; i < tempColl.length ; i++)
+			{
+			if ((tempColl(i).id.indexOf ("SXC") != -1) || (getIndent (tempColl (i)) > 0))
+				tempColl(i).style.display = "none" ;
+			}
+		}
+	}
+
+function onClicked (el)
+	{
+	if (!ver4) return;
+	if (IE4)
+		onClickedIE(el)
+	  else
+		onClickedNS(el)
+	}
+
+function getImageIndex (parentIndex)
+	{
+	return (parentIndex - 1) / 2 ;
+	}
+
+function switchVisibilityIE (theItem, image, image2)
+	{
+	if (theItem.style.display == "none")
+		{
+		theItem.style.display = "block" ;
+		if (image)
+			image.src = "w_web_image/SXIcon1.gif" ;
+		if (image2)
+			image2.src = "w_web_image/SXIcon3.gif" ;
+		}
+	  else
+		{
+		theItem.style.display = "none" ;
+		if (image)
+			image.src = "w_web_image/SXIcon0.gif" ;
+		if (image2)
+			image2.src = "w_web_image/SXIcon2.gif" ;
+		}
+	}
+
+function onClickedIE (el)
+	{
+	theItem = eval (el + "SXC") ;
+	image = event.srcElement ;
+
+	var image2 = null ;
+	imColl2 = document.images.item("SXIcon2") ;
+	if (bOpenIcon)
+		image2 = imColl2 (getImageIndex (getIndexIE (eval (el + "SXP")))) ;
+
+	var bShow = (theItem.style.display == "none") ;
+	switchVisibilityIE (theItem, image, image2)
+
+	var ind = getIndexIE (theItem) + 1 ;
+	tempColl = document.all.tags("DIV") ;
+	imColl = document.images.item("SXIcon") ;
+	while (ind != -1 && ind < tempColl.length)
+		{
+		var retVal = 0 ;
+		if (getIndent (tempColl (ind)) == (getIndent (theItem) + 1))
+			retVal = 1 ;
+		  else if (getIndent (tempColl (ind)) > (getIndent (theItem) + 1))
+			retVal = 2 ;
+		if (retVal == 0)
+			break ;
+		elem = tempColl (ind) ;
+		if (bShow)
+			{
+			if (retVal == 1 && elem.id.indexOf ("SXP") != -1)
+				switchVisibilityIE (elem, null, null) ;
+			}
+		  else
+			{
+			elem.style.display = "none" ;
+			if (elem.id.indexOf ("SXP") != -1)
+				{
+				imgInd = getImageIndex (ind) ;
+				if (imgInd < imColl.length)
+					imColl (imgInd).src = "w_web_image/SXIcon0.gif" ;
+				if (bOpenIcon)
+					imColl2 (getImageIndex (getIndexIE (elem))).src = "w_web_image/SXIcon2.gif" ;
+				}
+			}
+		ind++ ;
+		}
+	}
+
+function switchVisibilityNS (theItem, image, image2)
+	{
+	if (theItem.visibility == "hide")
+		{
+		theItem.visibility = "show" ;
+		if (image)
+			image.src = "w_web_image/SXIcon1.gif" ;
+		if (image2)
+			image2.src = "w_web_image/SXIcon3.gif" ;
+		}
+	  else
+		{
+		theItem.visibility = "hide" ;
+		if (image)
+			image.src = "w_web_image/SXIcon0.gif" ;
+		if (image2)
+			image2.src = "w_web_image/SXIcon2.gif" ;
+		}
+	}
+
+function onClickedNS (el)
+	{
+	theItem = eval ("document." + el + "SXC") ;
+	image = eval ("document." + el + "SXP.document.images['SXIcon']") ;
+	var image2 = null ;
+	if (bOpenIcon)
+		image2 = eval ("document." + el + "SXP.document.images['SXIcon2']") ;
+	var bShow = (theItem.visibility == "hide") ;
+	switchVisibilityNS (theItem, image, image2) ;
+	var ind = getIndexNS (theItem) + 1 ;
+	while (ind != -1 && ind < document.layers.length)
+		{
+		var retVal = 0 ;
+		if (getIndent (document.layers [ind]) == (getIndent (theItem) + 1))
+			retVal = 1 ;
+		  else if (getIndent (document.layers [ind]) > (getIndent (theItem) + 1))
+			retVal = 2 ;
+		if (retVal == 0)
+			break ;
+		elem = document.layers [ind] ;
+		if (bShow)
+			{
+			if (retVal == 1 && elem.id.indexOf ("SXP") != -1)
+				switchVisibilityNS (elem, null) ;
+			}
+		  else
+			{
+			elem.visibility = "hide" ;
+			if (elem.id.indexOf ("SXP") != -1)
+				{
+				elem.document.images ['SXIcon'].src = "w_web_image/SXIcon0.gif" ;
+				if (bOpenIcon)
+					elem.document.images ['SXIcon2'].src = "w_web_image/SXIcon2.gif" ;
+				}
+			}
+		ind++ ;
+		}
+	setPosition () ;
+	}
+
+function onExpandAll ()
+	{
+	newSrc = "w_web_image/SXIcon1.gif" ;
+
+	if (NS4)
+		{
+		//document.images ["SXIcon"].src = newSrc ;
+		for (i = firstItem ; i <= lastItem && i < document.layers.length ; i++)
+			{
+			theItem = document.layers [i] ;
+			if (theItem.id.indexOf ("SXP") != -1)
+				{
+				theItem.document.images ["SXIcon"].src = newSrc ;
+				if (bOpenIcon)
+					theItem.document.images ["SXIcon2"].src = "w_web_image/SXIcon3.gif" ;
+				}
+			theItem.visibility = "show" ;
+			}
+
+		setPosition ();
+		}
+	  else
+		{
+		divColl = document.all.tags ("DIV") ;
+		for (i = firstItem ; i<= lastItem && i < divColl.length ; i++)
+			divColl(i).style.display = "block";
+		imColl = document.images.item ("SXIcon") ;
+		for (i = 0 ; i < imColl.length ; i++)
+			imColl (i).src = newSrc ;
+		if (bOpenIcon)
+			{
+			imColl2 = document.images.item ("SXIcon2") ;
+			for (i = 0 ; i < imColl2.length ; i++)
+				imColl2 (i).src = "w_web_image/SXIcon3.gif" ;
+			}
+		}
+	}
+
+function onCollapseAll ()
+	{
+	newSrc = "w_web_image/SXIcon0.gif" ;
+
+	if (NS4)
+		{
+		//document.images ["SXIcon"].src = newSrc ;
+		for (i = firstItem ; i <= lastItem && i < document.layers.length ; i++)
+			{
+			theItem = document.layers [i] ;
+			if (theItem.id.indexOf ("SXP") != -1)
+				{
+				theItem.document.images ["SXIcon"].src = newSrc ;
+				if (bOpenIcon)
+					theItem.document.images ["SXIcon2"].src = "w_web_image/SXIcon2.gif" ;
+				}
+			if (theItem.id.indexOf ("SXC") != -1 || getIndent (theItem) > 0)
+				theItem.visibility = "hide" ;
+			}
+
+		setPosition ();
+		}
+	  else
+		{
+		divColl = document.all.tags ("DIV") ;
+		for (i = firstItem ; i <= lastItem && i < divColl.length ; i++)
+			{
+			if (divColl (i).id.indexOf ("SXC") != -1 || getIndent (divColl (i)) > 0)
+				divColl(i).style.display = "none" ;
+			}
+		imColl = document.images.item ("SXIcon") ;
+		for (i = 0 ; i < imColl.length ; i++)
+			imColl (i).src = newSrc ;
+		if (bOpenIcon)
+			{
+			imColl2 = document.images.item ("SXIcon2") ;
+			for (i = 0 ; i < imColl2.length ; i++)
+				imColl2 (i).src = "w_web_image/SXIcon2.gif" ;
+			}
+		}
+	}
+
+onload = initialize ;
+//-->
+</SCRIPT>
+
+</head>
+<body BGColor="#FFCC99">
+<CENTER>
+<FONT SIZE=6 COLOR=#bb8844 FACE="Matura MT Script Capitals">Sanskrit Documents Search</FONT></CENTER>
+<!p align="center">&nbsp;
+
+<div align="center">
+
+  <table BORDER="1" bgcolor="#FFCC99" width="559" cellpadding="5" cellspacing="1" height="24"><!height was 113>
+
+    <tr>
+
+      <th align="center" bgcolor="#FFBB99" nowrap height="21" width="541">
+
+        Search Sanskrit Resources on Sanskrit Documents site</th>
+
+    </tr>
+
+
+
+    <!tr>
+
+
+ <!td height="5" width="541" bordercolor="#FFCC99">
+  <!p align="center"><font color="#0000FF"><!You can Search on a Word or a Phrase
+  or Book Name<!/font>
+
+    <!/tr>
+    <tr>
+ <!FORM METHOD="POST" ACTION="http://www.picosearch.com/cgi-bin/ts.pl"><!td<!A HREF="http://www.picosearch.com/">
+ <!INPUT TYPE="HIDDEN" NAME="index" VALUE="132948">
+ <!td height="5" width="541" valign="middle" bordercolor="#FFCC99">
+ <!IMG BORDER="0" SRC="http://www.picosearch.com/picosmall.gif" ALT="Get PicoSearch for your site" align="absmiddle" width="62" height="25" lowsrc="Get%20PicoSearch%20for%20your%20site">&nbsp;&nbsp;
+ <!INPUT TYPE="TEXT" NAME="query" VALUE="" size="46"> <!INPUT TYPE="SUBMIT" VALUE="Search">
+
+<A name=SECTION01>
+<hr>
+<!--
+!-- Google search related script lines for single page--
+<center>Search Sanskrit Documents Collection Site</center>
+<div id="cse" style="width: 60%;">Loading</div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript"> 
+  google.load('search', '1', {language : 'en', style : google.loader.themes.ESPRESSO});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('007960454540906184509:rar81ul5qx8');
+    customSearchControl.setResultSetSize(google.search.Search.SMALL_RESULTSET);
+    customSearchControl.draw('cse');
+  }, true);
+</script>
+
+<style type="text/css">
+  .gsc-control-cse {
+    font-family: Georgia, serif;
+    border-color: #461200;
+    background-color: #FFCC99;
+  }
+  input.gsc-input {
+    border-color: #A25B08;
+  }
+  input.gsc-search-button {
+    border-color: #461200;
+    background-color: #461200;
+  }
+  .gsc-tabHeader.gsc-tabhInactive {
+    border-color: #A25B08;
+    background-color: #A25B08;
+  }
+  .gsc-tabHeader.gsc-tabhActive {
+    border-color: #461200;
+    background-color: #461200;
+  }
+  .gsc-tabsArea {
+    border-color: #461200;
+  }
+  .gsc-webResult.gsc-result {
+    border-color: #FFFFFF;
+    background-color: #FFFFFF;
+  }
+  .gsc-webResult.gsc-result:hover {
+    border-color: #FFFFFF;
+    background-color: #FFFFFF;
+  }
+  .gs-webResult.gs-result a.gs-title:link,
+  .gs-webResult.gs-result a.gs-title:link b {
+    color: #950000;
+  }
+  .gs-webResult.gs-result a.gs-title:visited,
+  .gs-webResult.gs-result a.gs-title:visited b {
+    color: #950000;
+  }
+  .gs-webResult.gs-result a.gs-title:hover,
+  .gs-webResult.gs-result a.gs-title:hover b {
+    color: #950000;
+  }
+  .gs-webResult.gs-result a.gs-title:active,
+  .gs-webResult.gs-result a.gs-title:active b {
+    color: #950000;
+  }
+  .gsc-cursor-page {
+    color: #950000;
+  }
+  a.gsc-trailing-more-results:link {
+    color: #950000;
+  }
+  .gs-webResult .gs-snippet {
+    color: #333333;
+  }
+  .gs-webResult div.gs-visibleUrl {
+    color: #A25B08;
+  }
+  .gs-webResult div.gs-visibleUrl-short {
+    color: #A25B08;
+  }
+  .gs-webResult div.gs-visibleUrl-short {
+    display: none;
+  }
+  .gs-webResult div.gs-visibleUrl-long {
+    display: block;
+  }
+  .gsc-cursor-box {
+    border-color: #FFFFFF;
+  }
+  .gsc-results .gsc-cursor-box .gsc-cursor-page {
+    border-color: #A25B08;
+    background-color: #FFFFFF;
+    color: #950000;
+  }
+  .gsc-results .gsc-cursor-box .gsc-cursor-current-page {
+    border-color: #461200;
+    background-color: #461200;
+    color: #950000;
+  }
+  .gs-promotion {
+    border-color: #FEFEDC;
+    background-color: #FFFFCC;
+  }
+  .gs-promotion a.gs-title:link,
+  .gs-promotion a.gs-title:link *,
+  .gs-promotion .gs-snippet a:link {
+    color: #0000CC;
+  }
+  .gs-promotion a.gs-title:visited,
+  .gs-promotion a.gs-title:visited *,
+  .gs-promotion .gs-snippet a:visited {
+    color: #0000CC;
+  }
+  .gs-promotion a.gs-title:hover,
+  .gs-promotion a.gs-title:hover *,
+  .gs-promotion .gs-snippet a:hover {
+    color: #0000CC;
+  }
+  .gs-promotion a.gs-title:active,
+  .gs-promotion a.gs-title:active *,
+  .gs-promotion .gs-snippet a:active {
+    color: #0000CC;
+  }
+  .gs-promotion .gs-snippet,
+  .gs-promotion .gs-title .gs-promotion-title-right,
+  .gs-promotion .gs-title .gs-promotion-title-right *  {
+    color: #333333;
+  }
+  .gs-promotion .gs-visibleUrl,
+  .gs-promotion .gs-visibleUrl-short {
+    color: #A25B08;
+  }
+</style>
+!-- End of Google search related script lines for single page--
+-->
+<!-- Try new -->
+<center>Search Sanskrit Documents Collection Site</center>
+<div id="cse-search-form" style="width: 100%;">Loading</div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript"> 
+  google.load('search', '1', {language : 'en', style : google.loader.themes.ESPRESSO});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('007960454540906184509:rar81ul5qx8');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.enableSearchboxOnly("https://sanskritdocuments.org/search-results.html");    
+    customSearchControl.draw('cse-search-form', options);
+  }, true);
+</script>
+
+<style type="text/css">
+  input.gsc-input {
+    border-color: #A25B08;
+  }
+  input.gsc-search-button {
+    border-color: #461200;
+    background-color: #461200;
+  }
+</style>
+
+<!-- End of Try new -->
+<P><P>
+<!-- Try new Devanagari-->
+<center>Search Unicode Devanagari</center>
+<center>"a" should be grey and type below</center>
+<center>Give a space in the end to see it in Devanagari before entering</center>
+
+<form action=" https://sanskritdocuments.org/search-results-dvng.html" id="cse-search-box">
+ <div>
+   <input type="hidden" name="cx" value="007960454540906184509:rar81ul5qx8" />
+   <input type="hidden" name="cof" value="FORID:9" />
+   <input type="hidden" name="ie" value="UTF-8" />
+   <input type="text" name="q" size="91" />
+   <input type="submit" name="sa" value="&#2309;&#2344;&#2381;&#2357;&#2375;&#2359;&#2339;&#2306; &#2325;&#2352;&#2379;&#2340;&#2367;" />
+ </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">google.load("elements", "1", {packages: "transliteration"});</script>
+<script type="text/javascript" src="http://www.google.com/cse/t13n?form=cse-search-box&amp;t13n_langs=hi"></script>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=hi"></script>
+<!-- End of Try new Devanagari-->
+<!h3><!center><!a href=./searchsite.html><!Click to Search
+Sanskrit Documents Site><!/a><!/h3>
+<hr>
+</FORM>
+    </tr>
+
+    <tr>
+
+      <th align="center" bgcolor="#FFFF99" nowrap height="20" width="541">
+
+        <p align="center">Search This Page</th>
+
+    </tr>
+
+    <tr>
+
+      <td width="541" height="11" bordercolor="#FFCC99">
+
+        <form name="search" onSubmit="return findInPage(this.string.value);">
+
+          <font size="3"><input type="submit" value="Search">  &nbsp;<input name="string" type="text" size="45" onChange="n = 0;"></font>
+
+        </form>
+
+      </td>
+
+    </tr>
+
+  </table>
+
+</div>
+
+<p>
+<UL> <UL>
+<A HREF="#" onClick="onExpandAll(); return false">
+<FONT style="">Expand All</FONT></A>
+&nbsp;|&nbsp;
+<A HREF="#" onClick="onCollapseAll(); return false">
+<FONT style="">Collapse All</FONT></A>
+<P>
+<DIV ID="SXR" CLASS=SXR>
+	<TABLE CLASS=TBL CELLPADDING=0 CELLSPACING=0 BORDER=0><TR><TD NOWRAP WIDTH=20></TD><TD>
+	<IMG SRC="w_web_image/SXIcon2.gif">&nbsp;<A CLASS="SXLR" HREF="https://sanskritdocuments.org/news.html" >News</A>
+	</TD></TR></TABLE>
+</DIV>
+
+<DIV ID="I0SXE4924076SXP" CLASS=SXP0>
+	<A HREF="#" onClick="onClicked('I0SXE4924076'); return false">
+	<IMG NAME="SXIcon" SRC="w_web_image/SXIcon0.gif" BORDER=0></A>
+	<IMG NAME="SXIcon2" SRC="w_web_image/SXIcon2.gif">&nbsp;Sanskrit
+</DIV>
+
+<DIV ID="I0SXE4924076SXC" CLASS=SXC0>
+	<TABLE CLASS=TBL CELLPADDING=0 CELLSPACING=0 BORDER=0><TR><TD NOWRAP WIDTH=40></TD><TD>
+	<IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/doc_1_index.html" >Index</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/doc_upanishhat/doc_upanishhat.html" >Upanishat</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/doc_giitaa/doc_giitaa.html" >Gita</A>
+	</TD></TR></TABLE>
+</DIV>
+
+<DIV ID="I1SXE4924796SXP" CLASS=SXP1>
+	<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0><TR><TD NOWRAP WIDTH=20></TD><TD CLASS=SXLP1>
+	<A HREF="#" onClick="onClicked('I1SXE4924796'); return false">
+	<IMG NAME="SXIcon" SRC="w_web_image/SXIcon0.gif" BORDER=0></A>
+	<IMG NAME="SXIcon2" SRC="w_web_image/SXIcon2.gif">&nbsp;Veda
+	</TD></TR></TABLE>
+</DIV>
+
+<DIV ID="I1SXE4924796SXC" CLASS=SXC1>
+	<TABLE CLASS=TBL CELLPADDING=0 CELLSPACING=0 BORDER=0><TR><TD NOWRAP WIDTH=60></TD><TD>
+	<IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC1" HREF="https://sanskritdocuments.org/doc_veda/doc_veda.html" >Index</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC1" HREF="https://sanskritdocuments.org/doc_veda/doc_veda.html" >Rigveda</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC1" HREF="https://sanskritdocuments.org/doc_veda/doc_veda.html" >Samaveda</A>
+	</TD></TR></TABLE>
+</DIV>
+
+<DIV ID="I1SXE4920580SXP" CLASS=SXP1>
+	<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0><TR><TD NOWRAP WIDTH=20></TD><TD CLASS=SXLP1>
+	<A HREF="#" onClick="onClicked('I1SXE4920580'); return false">
+	<IMG NAME="SXIcon" SRC="w_web_image/SXIcon0.gif" BORDER=0></A>
+	<IMG NAME="SXIcon2" SRC="w_web_image/SXIcon2.gif">&nbsp;Stotra
+	</TD></TR></TABLE>
+</DIV>
+
+<DIV ID="I1SXE4920580SXC" CLASS=SXC1>
+	<TABLE CLASS=TBL CELLPADDING=0 CELLSPACING=0 BORDER=0><TR><TD NOWRAP WIDTH=60></TD><TD>
+	<IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC1" HREF="https://sanskritdocuments.org/doc_ganesha/doc_ganesha.html" >Ganesha</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC1" HREF="https://sanskritdocuments.org/doc_vishhnu/doc_vishhnu.html" >Visnu/Krishna</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC1" HREF="https://sanskritdocuments.org/doc_raama/doc_raama.html" >Rama</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC1" HREF="https://sanskritdocuments.org/doc_hanumaana/doc_hanumaana.html" >Hanuman</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC1" HREF="https://sanskritdocuments.org/doc_shiva/doc_shiva.html" >Shiva</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC1" HREF="https://sanskritdocuments.org/doc_devii/doc_devii.html" >Devi</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC1" HREF="https://sanskritdocuments.org/doc_deities_misc/doc_deities_misc.html" >Other Deities</A>
+	</TD></TR></TABLE>
+</DIV>
+
+<DIV ID="I1SXE4920008SXP" CLASS=SXP1>
+	<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0><TR><TD NOWRAP WIDTH=20></TD><TD CLASS=SXLP1>
+	<A HREF="#" onClick="onClicked('I1SXE4920008'); return false">
+	<IMG NAME="SXIcon" SRC="w_web_image/SXIcon0.gif" BORDER=0></A>
+	<IMG NAME="SXIcon2" SRC="w_web_image/SXIcon2.gif">&nbsp;Yoga
+	</TD></TR></TABLE>
+</DIV>
+
+<DIV ID="I1SXE4920008SXC" CLASS=SXC1>
+	<TABLE CLASS=TBL CELLPADDING=0 CELLSPACING=0 BORDER=0><TR><TD NOWRAP WIDTH=60></TD><TD>
+	<IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC1" HREF="https://sanskritdocuments.org/doc_yoga/doc_yoga.html" >Index</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC1" HREF="https://sanskritdocuments.org/doc_devii/doc_devii.html" >Tantra</A>
+	</TD></TR></TABLE>
+</DIV>
+
+<DIV ID="I0SXE4919128SXP" CLASS=SXP0>
+	<A HREF="#" onClick="onClicked('I0SXE4919128'); return false">
+	<IMG NAME="SXIcon" SRC="w_web_image/SXIcon0.gif" BORDER=0></A>
+	<IMG NAME="SXIcon2" SRC="w_web_image/SXIcon2.gif">&nbsp;Miscellaneous
+</DIV>
+
+<DIV ID="I0SXE4919128SXC" CLASS=SXC0>
+	<TABLE CLASS=TBL CELLPADDING=0 CELLSPACING=0 BORDER=0><TR><TD NOWRAP WIDTH=40></TD><TD>
+	<IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/doc_z_misc_index.html" >Index</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/doc_z_misc_major_works/doc_z_misc_major_works.html" >Major Works</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/doc_z_misc_shankara/doc_z_misc_shankara.html" >Shankaracharya</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/doc_z_misc_sociology_astrology/doc_z_misc_sociology_astrology." >Sociology/Astrology</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/doc_z_misc_navagraha/doc_z_misc_navagraha.html" >Navagraha</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/doc_z_misc_general/doc_z_misc_general.html" >General</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/doc_z_misc_subhaashita/doc_z_misc_subh_1_title.html" >Subhashhita</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/doc_z_misc_amarakosha.html" >Amarakosha</A>
+	</TD></TR></TABLE>
+</DIV>
+
+<DIV ID="I0SXE4922820SXP" CLASS=SXP0>
+	<A HREF="#" onClick="onClicked('I0SXE4922820'); return false">
+	<IMG NAME="SXIcon" SRC="w_web_image/SXIcon0.gif" BORDER=0></A>
+	<IMG NAME="SXIcon2" SRC="w_web_image/SXIcon2.gif">&nbsp;Other languages
+</DIV>
+
+<DIV ID="I0SXE4922820SXC" CLASS=SXC0>
+	<TABLE CLASS=TBL CELLPADDING=0 CELLSPACING=0 BORDER=0><TR><TD NOWRAP WIDTH=40></TD><TD>
+	<IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/doc_z_otherlang_1_index.html" >Index</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/hindi/" >Hindi</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/marathi/documents.htm" >Marathi</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/gujarati/" >Gujarati</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/doc_z_otherlang_english/doc_z_otherlang_english.html" >English</A>
+	</TD></TR></TABLE>
+</DIV>
+
+<DIV ID="I0SXE4922216SXP" CLASS=SXP0>
+	<A HREF="#" onClick="onClicked('I0SXE4922216'); return false">
+	<IMG NAME="SXIcon" SRC="w_web_image/SXIcon0.gif" BORDER=0></A>
+	<IMG NAME="SXIcon2" SRC="w_web_image/SXIcon2.gif">&nbsp;Learning Tools
+</DIV>
+
+<DIV ID="I0SXE4922216SXC" CLASS=SXC0>
+	<TABLE CLASS=TBL CELLPADDING=0 CELLSPACING=0 BORDER=0><TR><TD NOWRAP WIDTH=40></TD><TD>
+	<IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/learning_tools/learning_tools.html" >Index</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/dict/" >Sanskrit Dictionary</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/learning_tutorial_wikner/index.html" >Sanskrit Tutorial</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/learning_1000_sentences/index.html" >One Thousand Sentences</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/learning_tools/learning_tools.html" >Other Tutorials</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/learning_tools/learning_tools.html" >Software</A>
+	</TD></TR></TABLE>
+</DIV>
+
+<DIV ID="I0SXE4918076SXP" CLASS=SXP0>
+	<A HREF="#" onClick="onClicked('I0SXE4918076'); return false">
+	<IMG NAME="SXIcon" SRC="w_web_image/SXIcon0.gif" BORDER=0></A>
+	<IMG NAME="SXIcon2" SRC="w_web_image/SXIcon2.gif">&nbsp;Mailing Lists
+</DIV>
+
+<DIV ID="I0SXE4918076SXC" CLASS=SXC0>
+	<TABLE CLASS=TBL CELLPADDING=0 CELLSPACING=0 BORDER=0><TR><TD NOWRAP WIDTH=40></TD><TD>
+	<IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/projects_usergroups.html" >Sanskrit</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/projects_usergroups.html" >Indology Mailing List</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/projects_usergroups.html" >Advaita List</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/projects_usergroups.html" >Usenet Groups</A>
+	</TD></TR></TABLE>
+</DIV>
+
+<DIV ID="I0SXE4922936SXP" CLASS=SXP0>
+	<A HREF="#" onClick="onClicked('I0SXE4922936'); return false">
+	<IMG NAME="SXIcon" SRC="w_web_image/SXIcon0.gif" BORDER=0></A>
+	<IMG NAME="SXIcon2" SRC="w_web_image/SXIcon2.gif">&nbsp;Processing Tools
+</DIV>
+
+<DIV ID="I0SXE4922936SXC" CLASS=SXC0>
+	<TABLE CLASS=TBL CELLPADDING=0 CELLSPACING=0 BORDER=0><TR><TD NOWRAP WIDTH=40></TD><TD>
+	<IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/processing_tools/processing_tools.html" >Index</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="http://www.aczoom.com/itrans/" >Itrans</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/web-interface/" >Itrans Web Interface for gifs & Postscript</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/web-interface/email-interface.html" >ITrans Email Interface for postscript and html</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/processing_tools/processing_tools.html" >itrans Mac</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="http://www.omkarananda-ashram.org/Sanskrit/Itranslt.html" >Itrans for Windows</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="http://www.cs.wisc.edu/~ghost/index.html" >Ghostscript</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/processing_tools/processing_tools.html" >Tex/La tex</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/processing_tools/processing_tools.html" >Fonts</A>
+	</TD></TR></TABLE>
+</DIV>
+
+<DIV ID="I0SXE4922896SXP" CLASS=SXP0>
+	<A HREF="#" onClick="onClicked('I0SXE4922896'); return false">
+	<IMG NAME="SXIcon" SRC="w_web_image/SXIcon0.gif" BORDER=0></A>
+	<IMG NAME="SXIcon2" SRC="w_web_image/SXIcon2.gif">&nbsp;Projects
+</DIV>
+
+<DIV ID="I0SXE4922896SXC" CLASS=SXC0>
+	<TABLE CLASS=TBL CELLPADDING=0 CELLSPACING=0 BORDER=0><TR><TD NOWRAP WIDTH=40></TD><TD>
+	<IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/projects_1_index.html" >Index</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/projects_list1.html" >List of Proposed Projects</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/volunteer_help.html" >Volunteering</A>
+	</TD></TR></TABLE>
+</DIV>
+
+<DIV ID="I0SXE4924240SXP" CLASS=SXP0>
+	<A HREF="#" onClick="onClicked('I0SXE4924240'); return false">
+	<IMG NAME="SXIcon" SRC="w_web_image/SXIcon0.gif" BORDER=0></A>
+	<IMG NAME="SXIcon2" SRC="w_web_image/SXIcon2.gif">&nbsp;Resources
+</DIV>
+
+<DIV ID="I0SXE4924240SXC" CLASS=SXC0>
+	<TABLE CLASS=TBL CELLPADDING=0 CELLSPACING=0 BORDER=0><TR><TD NOWRAP WIDTH=40></TD><TD>
+	<IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/processing_tools/processing_tools.html" >Other Resources</A>
+	</TD></TR></TABLE>
+</DIV>
+
+<DIV ID="I0SXE4919520SXP" CLASS=SXP0>
+	<A HREF="#" onClick="onClicked('I0SXE4919520'); return false">
+	<IMG NAME="SXIcon" SRC="w_web_image/SXIcon0.gif" BORDER=0></A>
+	<IMG NAME="SXIcon2" SRC="w_web_image/SXIcon2.gif">&nbsp;Links
+</DIV>
+
+<DIV ID="I0SXE4919520SXC" CLASS=SXC0>
+	<TABLE CLASS=TBL CELLPADDING=0 CELLSPACING=0 BORDER=0><TR><TD NOWRAP WIDTH=40></TD><TD>
+	<IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/links_1_index.html" >Index</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="http://www.upnaway.com/~bindu/anantayogaweb" target=new>Ananta Yoga Web</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="http://www.upnaway.com/~bindu/anantayogaweb/sitemap.html" target=new>Ananta Yoga Search Enigine</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/links5_audio.html" >Audio of Stotras</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/links2_gita.html" >Bhagavad Gita</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/links6_books.html" >Books & Courses</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/links4_general.html" >General Sanskrit</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/links1_indology.html" >Indology & Sanskrit</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="https://sanskritdocuments.org/links3_scriptures.html" >Scriptures &  Stotras</A>
+        <BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="http
+://sanskritdocuments.org/TextsElsewhere.html">Texts Elsewhere</A>
+	<BR><IMG SRC="w_web_image/SXIcon4.gif">&nbsp;<A CLASS="SXLC0" HREF="http://www.geocities.com/Athens/Acropolis/8715/add_feedback.html" >Guest Book / Mail</A>
+	</TD></TR></TABLE>
+</DIV>
+<P>
+<LI>See <a href=./site_map.html target=new>site map</a> for additional listing.
+</UL> </UL>
+
+<SCRIPT LANGUAGE="JavaScript1.2">
+<!--
+if (IE4)
+	{
+	firstItem = getIndexIE (SXR) ;
+	lastItem = getIndexIE (I0SXE4919520SXC) ;
+document.write ('<IMG STYLE="display:none" NAME="SXIcon">\n<IMG STYLE="display:none" NAME="SXIcon2">\n') ;	}
+if (NS4)
+	{
+	firstItem = getIndexNS (document.SXR) ;
+	lastItem = getIndexNS (document.I0SXE4919520SXC) ;
+	for (i = firstItem ; i <= lastItem && i < document.layers.length ; i++)
+		document.layers [i].visibility = "show" ;
+	setPosition () ;
+	}
+//-->
+</SCRIPT>
+
+</body>
+</html>
+

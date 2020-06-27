@@ -1,0 +1,14 @@
+User-agent: *
+Disallow: /ajay/
+Disallow: /backupSites/
+Disallow: /temptgz/
+Disallow: /doc_trial/
+Disallow: /ALL-SAVE-FOR-DELETE/
+Disallow: /sanskritupload/
+Disallow: /dload/
+Disallow: /web-interface/
+Disallow: /cgi-bin/
+Disallow: /scannedbooks/forencoding/
+Disallow: /marathi/ebooks/
+Disallow: ‎/learning_tools/sarvanisutrani/‎
+Disallow: /surasa/

@@ -1,0 +1,1160 @@
+<HTML>
+<!--
+% ITRANS 5.30 control statements: (5.30 or later required)
+
+% #sanskrit uses usanskrit.ifm - similar to udvng.ifm except default is .h not a
+%
+% ---------------------------------------------------------
+% ITRANS 5.30 (29 July 2006) (HTML [Unicode UTF-8] Interface)
+% Copyright 1991--2001 Avinash Chopde, All Rights Reserved.
+% ---------------------------------------------------------
+%
+
+
+
+
+
+
+ 
+
+
+-->
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<LINK REV="made" HREF="mailto:sanskrit@cheerful.com">
+<style type="text/css">
+    BODY {margin-left: 10% ; margin-right: 10%}
+</style>
+<TITLE>
+\documentstyle[12pt,multicol,itrans]article
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% file name: ijag.inc 
+% based on sample ITRANS 5.1 files by Avinash Chopade
+% Page formatting macros from idevn.tex by Avinash Chopade
+% Stotra meaning macros are based on dvaadasha stotra file 
+% from Raghunath Rao (rrao@crystal.cirrus.com)  
+% Macros for vedic accents are by Avinash Sathaye (sohum@ms.uky.edu)
+% they are taken from the taitaccent.itx file
+%
+% using ITRANS (Version 5.x) with the TeX output mode of ITRANS.
+%% uses Largedvng font
+%%
+%% use #indian or #sanskrit for Devanagari output
+%% use #roman for Classical Sanskrit - Roman output
+%
+% usage: #include=ijag.inc
+% It has to be in the same directory as the .itx file where it is included
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			% ITRANS command. Allows me to use ##
+	
+			% instead of #indian and #endindian
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%devanagari fonts
+%
+	
+			% ITRANS command: argument specifies use of
+	
+			% Frans's dvng font, defined in idevn.tex
+
+			% use dvngfull.ifm for all ligatures 
+	
+%%%%#sanskritifm=dvng.ifm	
+			% provided as an alternate for #indian.
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definitions just to be compatible with email server
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The CS Utopia PostScript Romanized Sanskrit font.
+			% this will only work for creating postscript files
+			% cannot view .dvi files using YAP etc.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%From: sohum@ms.uky.edu
+%Date: Fri, 2 Aug 1996 14:45:01 -0400 (EDT)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Special Ligatures:
+%%
+%% A crude attempt to restore some of the ligatures of the original
+%% Velthuis fonts. These don't get invoked in ITRANS since they have 
+%% more than two consonants.
+%% So we make a macro, using the same sequence that you would type
+%% had it been allowed in ITRANS. Of course, you need an extra "\".
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\dvyu{\char149\kRn{-0.3}\sBs{-0.25}{\char0}\kRn{0.3}}%special ligature
+\def\dvya{\char149}%special ligature
+\def\dvyaa{\char149 A}%special ligature
+\def\dvra{\char146\kRn{-0.52}\sBs{-0.3}{\char125}\kRn{-0.1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Vedic symbols. Other special symbols may be attached here too.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%sannatara mark (underbar)-prefix - not convenient for typing, methinks!
+        \def\u#1{\underline{\rule[-0.5em]{0em}{1em}#1}}
+%svarita mark(overbar)-prefix - ditto
+	\def\s#1{#1\kRn{-0.12}\rule[0.8em]{0.1em}{0.5em}}
+% alt.sannatara (underbar) - I like this, just gets added as a postfix.	
+        \def\`{\kRn{-1.5} \rule[-0.5em]{0.5em}{0.1em}\kRn{0.2}}
+%alt. svarita  (overbar) - ditto.
+        \def\'{\kRn{-0.12}\rule[0.8em]{0.1em}{0.5em}}
+        \def\"{\kRn{-0.3}\rule[0.8em]{0.1em}{0.5em}
+               \kRn{-0.29}\rule[0.8em]{0.1em}{0.5em}}
+% kampa marks. make more as needed.
+%kampa short
+	 \def\kp{ 1\`\' }
+	 \def\Kp{ 3\`\' } % kampa long
+% Vedic anusvara(?) with chandrabindu.
+\def\m+{\sBs{-0.30}{\char32}\kRn{-0.5}\sBs{0.50}{\char94}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -----------------------------------------------------------------
+% Page commands (for LaTeX ONLY, use one of these commands in preamble)
+\def\portraitpage{%
+    \setlength{\topmargin}{-0.50in} % real margin == this + 1in
+    \setlength{\oddsidemargin}{-0.0in} % real margin == this + 1in
+    \setlength{\evensidemargin}{-0.0in} % real margin == this + 1in
+    \setlength{\columnsep}{20pt}
+    \setlength{\columnseprule}{0.4pt}
+    \setlength{\textwidth}{6.5in}
+    \setlength{\textheight}{9.0in}%
+}
+\def\portraitwide{%
+    %\setlength{\topmargin}{-0.750in} % real margin == this + 1in
+    \setlength{\topmargin}{-.5in} % real margin == this + 1in
+    \setlength{\oddsidemargin}{-0.5in} % real margin == this + 1in
+    \setlength{\evensidemargin}{-0.0in} % real margin == this + 1in
+    \setlength{\columnsep}{20pt}
+    \setlength{\columnseprule}{0.4pt}
+    \setlength{\textwidth}{7.5in}
+    \setlength{\textheight}{9.05in}%
+}
+\def\a4wide{%
+     \special{papersize=210mm,297mm}%
+     \setlength{\textheight}{250mm}
+     \setlength{\textwidth}{185mm}
+     \setlength{\topmargin}{-15mm}
+     \setlength{\oddsidemargin}{-5mm}
+     \addtolength{\evensidemargin}{-8mm}
+     \setlength{\columnsep}{20pt}
+     \setlength{\columnseprule}{0.4pt}
+}
+\def\portraitgif{%
+	\setlength{\topmargin}{-1.30in}
+	\setlength{\oddsidemargin}{-.5in}
+	\setlength{\evensidemargin}{-0.0in}
+	\setlength{\textwidth}{7.5in}
+	\setlength{\textheight}{10.70in}
+}
+\def\portraitgifthin{%
+	\setlength{\topmargin}{-1.30in}
+	\setlength{\oddsidemargin}{-.75in}
+	\setlength{\evensidemargin}{-0.0in}
+	\setlength{\textwidth}{5.75in}
+	\setlength{\textheight}{10.70in}
+}
+\def\bookletpage{%
+	\special{papersize=11in,8.5in}
+	\setlength{\textheight}{175mm}
+	\setlength{\textwidth}{4.2in}
+	\addtolength{\topmargin}{-20mm}
+	\addtolength{\oddsidemargin}{-30mm}
+	\addtolength{\evensidemargin}{-40mm}
+}
+\def\landscapepage{%
+    \typeout{Landscape Mode: be sure to print in landscape format}
+    \typeout{   (for dvips, use -t landscape option)}
+    
+    \setlength{\topmargin}{-0.75in} % real margin == this + 1in
+    \setlength{\oddsidemargin}{-0.5in} % real margin == this + 1in
+    \setlength{\evensidemargin}{-0.5in} % real margin == this + 1in
+    \setlength{\columnsep}{20pt}
+    \setlength{\columnseprule}{0.4pt}
+    % Use Landscape Size Page 
+    \setlength{\textwidth}{10.0in}
+    \setlength{\textheight}{7in}%
+}
+\def\landscapegif{%
+    \typeout{Landscape Mode: be sure to print in landscape format}
+    \typeout{   (for dvips, use -t landscape option)}   
+    \setlength{\topmargin}{-1.4in} % real margin == this + 1in
+    \setlength{\oddsidemargin}{+0.5in} % real margin == this + 1in
+    \setlength{\evensidemargin}{+0.5in} % real margin == this + 1in
+    \setlength{\columnsep}{20pt}
+    \setlength{\columnseprule}{0.4pt}
+    % Use Landscape Size Page 
+    \setlength{\textwidth}{9.5in}
+    \setlength{\textheight}{8.3in}%
+}
+\def\landscapegifthin{%
+	\setlength{\topmargin}{-1.30in}
+	\setlength{\textwidth}{9.5in}
+	\setlength{\textheight}{10.70in}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\EN#1{} % empty operator
+\def\m+{\sBs{-0.30}{\char32}\kRn{-0.5}\sBs{0.50}{\char94}\ } %Vedic anusvaar
+\def\bcksl{{\tt\char92}} % to force a backslash since will add linebreak
+\newcommand{\SCOUNT}{\stepcounter{scounter}\arabic{scounter}}
+\newcounter{scounter}
+\newcommand{\RCOUNT}{\stepcounter{rcounter}\arabic{rcounter}}
+\newcounter{rcounter}
+\newcommand{\sct}{\stepcounter{scounter}\arabic{scounter}}
+
+	% from startsong command:
+\def\-{{\englfont -}}%
+\def\.{{\englfont .}}%
+\def\,{{\englfont ,}}%
+\def\;{{\englfont ;}}%
+\def\:{{\englfont :}}%
+\def\!{{\englfont !}}%
+      % opening double quotes and closing double quotes 12/27/97
+\def\oq{{\englfont `` }}%
+\def\cq{{\englfont'' }}%
+	% quote environment for indenting shlokas
+	% use \break to justify lines within it
+\def\bq{\begin{quote}}
+\def\eq{\end{quote}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%% BEGIN RAGHU'S MACROS 
+%%%
+%%% Actually, condensed from raghumac.tex: macros for Appa's book %%%%%%%%
+
+%%%%%%%% SPECIALS %%%%%%%%%
+
+\def\myline{\medskip\noindent\rule[0.1mm]{6.5in}{0.4mm}\\}
+	% Draws a 6.5 inch long horizontal line of 0.5 mm thickness
+
+%%%%%%%% SHLOKA ENVIRONMENT %%%%%%%%%
+
+\def\makeshlokaheading#1{\myline\medskip\centerline{\bf SHLOKA #1}\smallskip}
+	% Makes the Shloka Heading with their number(s) as argument #1
+
+\def\beginsmallshloka{\begin{center}\begin{minipage}{3.5in}}
+	% Begins the Shloka environment
+
+\def\beginmedshloka{\begin{center}\begin{minipage}{4.5in}}
+	% Begins the Shloka environment
+
+\def\beginlargeshloka{\begin{center}\begin{minipage}{5.5in}}
+	% Begins the Shloka environment
+
+\def\endshloka#1{{\fransdvng\largedvng $\!\!\!$.. #1 $\!\!\!$..}
+\end{minipage}\end{center}}
+	% Ends the Shloka environment with the #1 argument juxtaposed in Sanskrit
+
+\def\endshlokab{\end{minipage}\end{center}}
+	% Ends the Shloka environment without any argument :-^ :-) 
+
+\def\makeuvaacha#1{\smallskip\noindent #1 :\smallskip\\}
+	% Left justifies the Sanskrit argument #1 in the current minipage
+
+%%%%%%%% TRANSLATION ENVIRONMENT %%%%%%%%%
+
+\def\maketranheading #1{\medskip\centerline{\bf #1}\smallskip}
+	% Makes the Translation Heading with text as argument #1
+
+\def\begintran{\indent}
+	% Begins the Translation environment
+\def\endtran#1{\hfill {\bf ...#1}\\}
+	% Ends the Translation environment with right justified #1 parameter
+
+\def\endtrans{\\ \medskip}
+	% Ends the Translation environment without parameter
+
+\def\makesubheading #1{\medskip\noindent{\bf #1}}
+	% Makes the sub heading
+
+%%%%%%%% STOTRA ENVIRONMENT %%%%%%%%%
+
+\def\beginstotra{\noindent\rule[0.1mm]{6.45in}{0.4mm}\\ \smallskip}
+
+\def\endstotra{\noindent\rule[0.1mm]{6.45in}{0.4mm}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% END RAGHU'S MACROS 
+
+\def\zzz#1{\medskip\hrule\medskip\centerline{\SCOUNT}\centerline{.. #1..}}
+
+
+\portraitwide
+\parindent=0pt    % no indents
+\let\usedvng=	
+\pagenumberingitrans 
+
+\fransdvng
+ ||jy jy rGvFr smT ||
+ ||F rAmdAs-vAEm\c F mnAc [lok ||
+\fransdvng
+gZADFf jo If svA gZA\cA |
+mAr\B aAr\B to EngZAcA ||
+nm\ fArdA m c(vAr vAcA |
+gm p\T aAn\t yA rAGvAcA ||||
+mnA s&gt;jnA BE?tp\TcF jAv |
+trF FhrF pAEvjto -vBAv ||
+jnF\ En\ t sv soXnF Av |
+jnF\ v\ t sv BAv krAv ||||
+þBAt mnF\ rAm Ec\tFt jAvA |
+pY v{KrF rAm aADF vdAvA ||
+sdAcAr hA Tor sA\X ny to |
+jnF\ toEc to mAnvF Dy hoto ||||
+mnA vAsnA d£ kAmA n y r |
+mnA svTA pApbF nko r ||
+mnA svTA nFEt soX nko ho |
+mnA a\trF sAr vFcAr rAho ||||
+mnA pAps\kSp soXEn AvA |
+mnA s(y s\kSp jFvF DrAvA ||
+mnA kSpnA t nko vFqyA\cF |
+EvkAr GX ho jnF\ sv cF cF ||||
+nko r mnA oD hA KdkArF |
+nko r mnA kAm nAnA EvkArF ||
+nko r mnA svdA a\EgkA! |
+nko r mnA m(s! d\B BA! ||||
+mnA ¤ DAEr£ jFvF DrAv |
+mnA bolZ nFc sofFt jAv ||
+-vy svdA nm} vAc vdAv |
+mnA sv lokA\Es r nFvvAv ||||
+dh (yAEgtA kFEt mAg urAvF |
+mnA s&gt;jnA hEc FyA DrAvF ||
+mnA c\dnAc prF (vA\ EJjAv |
+prF a\trF s&gt;jnA nFvvAv ||||
+nko r mnA dý&amp;y t pEYlA\c |
+aEt -vATbF nr pAp sA\c ||
+GX BogZ pAp t km KoV |
+n hotA mnAsAErK d,K moW ||||
+sdA svdA þFEt rAmF DrAvF |
+sKAcF -vy sA\EX jFvF krAvF ||
+dhd,K t sK mAnFt jAv |
+Evvk sdA -v-v!pF BrAv ||||
+jnF\ svsKF asA koZ aAh |
+EvcAr mnA tEc foDEn pAh ||
+mnA (vAEc r pvs\cFt kl |
+tyAsAErK BogZ þA=t JAl ||||
+mnA mAnsF d,K aAZ nko r |
+mnA svTA fok Ec\tA nko r ||
+Evvk dhbE soXEn AvF |
+EvdhFpZ mE?t BogFt jAvF ||||
+mnA sA\g pA\ rAKZA kAy jAl |
+ak-mAt t rA&gt;y sv{ bXAl ||
+MhZonF kXF vAsnA sA\EX vgF |
+b lAglA kA hA pAEWlAgF ||||
+EjvA kmyog jnF\ jm jAlA |
+prF fvVF kAmKF EnmAlA ||
+mhATor t m(yp\TEc gl |
+EktFek t jml aAEZ ml ||||
+mnA pAhtA s(y h m(yBmF |
+EjtA\ boltF svhF jFv mF mF ||
+Ecr\jFv h svhF mAEntAtF |
+ak-mAt sA\XEnyA sv jAtF ||||
+mr ek (yAcA djA fok vAh |
+ak-mAt tohF pY jAt aAh ||
+prnA jnF\ loB r &#034;oB (yAt |
+MhZonF jnF\ mAgtA jm Gt ||||
+mnF mAnvA &amp;yT Ec\tA vhAt |
+ak-mAt hoZAr hoUn jAt ||
+GX BogZ svhF kmyog |
+mtFm\d t Kd mAnF Evyog ||||
+mnA rAGvvFZ aAfA nko r |
+mnA mAnvAcF nko kFEt t r ||
+jyA vEZtF vd fA-/ prAZ |
+tyA vEZtA svhF [lA]yvAZ ||||
+mnA svTA s(y sA\X nko r |
+mnA svTA EmLy mA\X nko r ||
+mnA s(y t s(y vAc vdAv |
+mnA EmLy t EmLy soXEn Av ||||
+bh Eh\pVF hoIj mAypoVF |
+nko r mnA yAtnA tEc moWF ||
+EnroD pc ko\EXl gBvAsF |
+aDomK r d,K (yA bAkAsF ||||
+mnA vAsnA ckvF yrJArA |
+mnA kAmnA soEX r dý&amp;ydArA ||
+mnA yAtnA Tor h gBvAsF |
+mnA s&gt;jnA BVvF rAGvAsF ||||
+mnA s&gt;jnA hFt mAJ krAv |
+rGnAykA dY EcF DrAv ||
+mhArAj to -vAEm vAystAcA |
+jnA urF nAT lok/yAcA ||||
+n bol mnA rAGvvFZ kAhF |
+mnF vAug boltA sK nAhF ||
+GXFn GXF kA aAy	y nto |
+dhA\tF tlA koZ soX phAto ||||
+rGnAykAvFZ vAyA EfZAv |
+jnAsAErK &amp;yT kA vosZAv ||
+sdA svdA nAm vAc vso d |
+ah\tA mnF pAEpZF t nso d ||||
+mnA vFV mAn nko bolyAcA |
+pY mAgtA rAm joXl k{cA ||
+sKAcF GXF loVtA sK aAh |
+pY sv jAIl kAhF n rAh ||||
+dhr&#034;ZAkArZ y(n klA |
+prF fvVF kA GUn glA |
+krF r mnA BE?t yA rAGvAcF |
+pY a\trF soEX Ec\tA BvAcF ||||
+BvAQyA By kAy BFtos l\XF |
+DrF r mnA DFr DAkAEs sA\XF ||
+rGnAykAsAErKA -vAEm fFrF |
+np&#034;F kdA kopSyA d\XDArF ||||
+EdnAnAT hA rAm kod\XDArF |
+pY dKtA kA poVF TrArF ||
+mnA vA?y nm-t h s(y mAnF |
+np&#034;F kdA rAm dAsAEBmAnF ||||
+pdF rAGvAc sdA b}Fd gAj |
+b B?trFpEfrF kA\Eb vAj ||
+prF vAEhlF sv jZ\ EvmAnF |
+np&#034;F kdA rAm dAsAEBmAnF ||||
+smTAEcyA svkA v pAh |
+asA sv Bm\XF koZ aAh ||
+jyAcF EllA vEZtF lok tFhF |
+np&#034;F kdA rAm dAsAEBmAnF ||||
+mhAs\kVF soEXl dv jZ |
+þtAp b aAgA svgZ ||
+jyAt -mr f{ljA flpAZF |
+np&#034;F kdA rAm dAsAEBmAnF ||||
+ahSyA EfA rAGv m?t klF |
+pdF lAgtA Ed&amp;y hoUEn glF ||
+jyA vEZtA fFZlF vdvAZF |
+np&#034;F kdA rAm dAsAEBmAnF ||||
+vs mzmA\dAr h sE£lFlA |
+ffF sy tArA\gZ mGmAlA ||
+Ecr\jFv kl jnF\ dAs dohF |
+np&#034;F kdA rAm dAsAEBmAnF ||||
+up&#034;F kdA rAm!pF asnA |
+EjvA mAnvA Enyo to vsnA ||
+EfrF BAr vAhn bol prAZF |
+np&#034;F kdA rAm dAsAEBmAnF ||||
+as ho jyA a\trF BAv j{sA |
+vs ho tyA a\trF dv t{sA ||
+anyAs r&#034;Fts cAppAZF |
+np&#034;F kdA rAm dAsAEBmAnF ||||
+sdA svdA dv sàFD aAh |
+kpApZ aSp DAEr£ pAh ||
+sKAn\d aAn\d k{vSydAnF |
+np&#034;F kdA rAm dAsAEBmAnF ||||
+sdA cvAkAEs mAt\X j{sA |
+uXF GAElto s\kVF -vAEm t{sA ||
+hrFBE?tcA GAv gAj EnfAZF |
+np&#034;F kdA rAm dAsAEBmAnF ||||
+mnA þATnA tjlA ek aAh |
+rGrAj T?kFt hoUEn pAh ||
+av+A kdA ho ydTF n kFj |
+mnA s&gt;jnA rAGvF vE-t kFj ||||
+jyA vEZtF vd fA-/ prAZ |
+jyAcEn yog smADAn bAZ ||
+tyAlAEg h sv cA\cSy dFj |
+mnA s&gt;jnA rAGvF vE-t kFj ||||
+mnA pAEvj svhF sK jT |
+atF aAdr WEvj l&#034; tT ||
+EvEvk kXF kSpnA pAlVFj |
+mnA s&gt;jnA rAGvF vE-t kFj ||||
+bh Eh\XtA sOHy hoZAr nAhF |
+EfZAv prF nAtX hFt kAhF ||
+EvcAr br a\trA boDvFj |
+mnA s&gt;jnA rAGvF vE-t kFj ||||
+bhtA\prF hEc aAtA DrAv |
+rGnAykA aApls krAv ||
+EdnAnAT h toXrF b}Fd gAj |
+mnA s&gt;jnA rAGvF vE-t kFj ||||
+mnA s&gt;jnA ek jFvF DrAv |
+jnF\ aApl hFt tvA\ krAv ||
+rGnAykAvFZ bolo nko ho |
+sdA mAnsF to Enj@yAs rAho ||||
+mnA r jnF\ mOnmdýA DrAvF |
+kTA aAdr rAGvAcF krAvF ||
+ns rAm t DAm soXEn Av |
+sKAlAEg aAry svFt jAv ||||
+jyAcEn s\g smADAn B\g |
+ah\tA ak-mAt yUEn lAg ||
+ty s\gtFcF jnF\ koZ goXF |
+Ejy s\gtFn mtF rAm soXF ||||
+mnA j GXF rAGvvFZ glF |
+jnF\ aAplF t tvA hAEn klF ||
+rGnAykAvFZ to fFZ aAh |
+jnF\ d&#034; to l&#034; lAvEn pAh ||||
+mnF\ locnF FhrF toEc pAh |
+jnF\ jAZtA m?t hoUEn rAh ||
+gZF þFEt rAK m\ sADnAcA |
+jgF Dy to dAs svomAcA ||||
+sdA dvkAjF EJj dh &gt;yAcA |
+sdA rAmnAm vd s(y sAcA ||
+-vDmEc cAl sdA umAcA |
+jgF Dy to dAs svomAcA ||||
+sdA bolyAsAErK cAltAh |
+ankF sdA ek dvAEs pAh ||
+sgZF Bj lf nAhF B}mAcA |
+jgF Dy to dAs svomAcA ||||
+ns a\trF kAm nAnAEvkArF |
+udAsFn jo tApsF b}cArF ||
+EnvAlA mnF\ lf nAhF tmAcA |
+jgF Dy to dAs svomAcA ||||
+md m(sr sA\EXlF -vATbF |
+þp\cFk nAhF jyAt upADF ||
+sdA bolZ nm} vAcA svAcA |
+jgF Dy to dAs svomAcA ||||
+mF v jo tvEc\tAnvAd |
+n El\p kdA d\B vAd EvvAd ||
+krF sKs\vAd jo UgmAcA |
+jgF Dy to dAs svomAcA ||||
+sdA aAjvF þFy jo sv lokF |
+sdA svdA s(yvAdF EvvkF ||
+n bol kdA EmLy vAcA E/vAcA |
+jgF Dy to dAs svomAcA ||||
+sdA sEv aAry tAzykAF |
+EmnA kdA kSpncEn mF ||
+cnA mnF Enyo dY &gt;yAcA |
+jgF Dy to dAs svomAcA ||||
+ns mAnsF n£ aAfA drAfA |
+vs a\trF þmpAfA EppAfA ||
+ZF dv hA BE?tBAv jyAcA |
+jgF Dy to dAs svomAcA ||||
+EdnAcA dyA mnAcA mvA |
+-nhA kpA jnF\ dAspA ||
+tyA a\trF oD s\tAp k{cA |
+jgF Dy to dAs svomAcA ||||
+jgF hoij Dy yA rAmnAm |
+EyA BE?t UpAsnA En(y nm\ ||
+udAsFntA tvtA sAr aAh |
+sdA svdA mokF vE rAh ||||
+nko vAsnA vFqyF vE!p |
+pdATF jX kAmnA pvpAp ||
+sdA rAm En	kAm Ec\tFt jAvA |
+mnA kSpnAlf toEh nsAvA ||||
+mnA kSpnA kESptA kSpkoVF |
+n&amp;h r n&amp;h svTA rAmBVF ||
+mnF kAmnA rAm nhF jyAlA |
+atF aAdr þFEt nAEh tyAlA ||||
+mnA rAm kSpt! kAmDn |
+EnDF sAr Ec\tAmZF kAy vAn ||
+jyAcEn yog GX sv sA |
+tyA sAMytA kAysF koZ aAtA ||||
+uBA kSpv&#034;AtF d,K vAh |
+tyA a\trF svdA tEc aAh ||
+jnF\ s&gt;jnF\ vAd hA vAYvA |
+pY mAgtA fok jFvF DrAvA ||||
+Enj@yAs to sv tVonF glA |
+b a\trF fok s\tAp WlA ||
+sKAn\d aAn\d Bd bXAlA |
+mnA Enyo sv Kd uXAlA ||||
+GrF kAmDn pY tAk mAg |
+hrFboD sA\XoEn vvAd lAg ||
+krF sAr Ec\tAmZF kAcK\X |
+tyA mAgtA dt aAh ud\X ||||
+atF mY (yA dY bF asnA |
+atF kAm (yA rAm EcF vsnA ||
+atF loB (yA &#034;oB hoIl jAZA |
+atF vFqyF svdA d{yvAZA ||||
+nko d{yvAZ EjZ BE?tUZ |
+atF mK (yA svdA d,K dZ ||
+DrF r mnA aAdr þFEt rAmF |
+nko vAsnA hmDAmF EvrAmF ||||
+n&amp;h sAr s\sAr hA Gor aAh |
+mnA s&gt;jnA s(y foDEn pAh ||
+jnF\ vFq KAtA pY sK k{c |
+krF r mnA @yAn yA rAGvAc ||||
+Gn[yAm hA rAm lAvy!pF |
+mhADFr g\BFr pZþtApF ||
+krF s\kVF svkA\cA kXAvA |
+þBAt mnF rAm Ec\tFt jAvA ||||
+b aAgA rAm kod\XDArF |
+mhAkA EvA tohF TrArF ||
+pY mAnvA Ek\krA koZ kvA |
+þBAt mnF rAm Ec\tFt jAvA ||||
+sKAn\dkArF EnvArF ByAt |
+jnF\ BE?tBAv BjAv tyAt ||
+Evvk (yjAvA anAcAr hvA |
+þBAt mnF rAm Ec\tFt jAvA ||||
+sdA rAmnAm vdA pZkAm |
+kdA bAEDjnA pdA En(y nm ||
+mdAl-y hA sv soXoEn AvA |
+þBAt mnF rAm Ec\tFt jAvA ||||
+jyAcEn nAm mhAdoq jAtF |
+jyAcEn nAm gtF pAEvjtF ||
+jyAcEn nAv GX pyWvA |
+þBAt mnF rAm Ec\tFt jAvA ||||
+n vc kdA g}\TcF aT kAhF |
+mK nAm uQcAErtA k£ nAhF ||
+mhAGor s\sArf/ EjZAvA |
+þBAt mnF rAm Ec\tFt jAvA ||||
+dhd\XZc mhAd,K aAh |
+mhAd,K t nAm GtA n rAh ||
+sdAfFv Ec\tFts dvdvA |
+þBAt mnF rAm Ec\tFt jAvA ||||
+bhtA\prF s\kV sADnA\cF |
+v}t dAn uApn tF DnAcF ||
+EdnAcA dyA mnF aAWvAvA |
+þBAt mnF rAm Ec\tFt jAvA ||||
+sm-tA\mD sAr sAcAr aAh |
+knA trF sv foDn pAh ||
+EjvA as\fyo vAUgA to (yjAvA |
+þBAt mnF rAm Ec\tFt jAvA ||||
+n&amp;h km nA Dm nA yog kAhF |
+n&amp;h Bog nA (yAg nA sA\g pAhF ||
+MhZ dAs EvAs nAmF DrAvA |
+þBAt mnF rAm Ec\tFt jAvA ||||
+krF kAm En	kAm yA rAGvAc |
+krF !p -v!p svA\ EjvA\c ||
+krF C\d En\ h gZ gAtA |
+hrFkFtnF vEEvAs hotA ||||
+aho &gt;yA nrA rAmEvAs nAhF |
+tyA pAmrA bAEDj sv kAhF ||
+mhArj to -vAEm k{vSydAtA |
+vTA vAhZ dhs\sArEc\tA ||||
+mnA pAvnA BAvnA rAGvAcF |
+DrF a\trF soEX Ec\tA BvAcF ||
+BvAcF EjvA mAnvA BEl WlF |
+ns v-tcF DArZA &amp;yT glF ||||
+DrA FvrA (yA hrA a\trAt |
+trA d-trA (yA prA sAgrAt ||
+srA vFsrA (yA BrA dBrAt |
+krA nFkrA (yA KrA m(srAt ||||
+mnA m(sr nAm sA\X nko ho |
+atF aAdr hA Enj@yAs rAho ||
+sm-tA\mD nAm h sAr aAh |
+djF tZA tEtAhF n sAh ||||
+bh nAm yA rAmnAmF tnA |
+aBA`yA nrA pAmrA h knA ||
+EvqA aOqDA Gtl pAvtFf |
+EjvA mAnvA Ek\krA koZ ps ||||
+jZ jAElA kAm to rAm @yAto |
+umsF atF aAdr gZ gAto ||
+bh +An v{rA`y sAmLy jT |
+prF a\trF nAmEvAs tT ||||
+EvWon EfrF vAEhlA dvrAZA |
+tyA a\trF @yAs r (yAEs nZA ||
+EnvAlA -vy tApsF c\dýmOF |
+EjvA soXvF rAm hA a\tkAF ||||
+BjA rAm EvAm yogrA\cA |
+jp nEmlA nm gOrFhrAcA ||
+-vy nFvvF tApsF c\dýmOF |
+tMhA\ soXvF rAm hA a\tkAF ||||
+mKF rAm EvAm tTEc aAh |
+sdAn\d aAn\d svoEn aAh ||
+tyAvFZ to fFZ s\dhkArF |
+EnjDAm h nAm fokAphArF ||||
+mKF rAm (yA kAm bAD fknA |
+gZ i£ DAEr£ (yAc cknA ||
+hrFB?t to f?t kAmAs BArF |
+jgF Dy to mAztF b}cArF ||||
+bh cA\gl nAm yA rAGvAc |
+atF sAEjr -vSp sop PkAc ||
+krF m Enm GtA BvAc |
+EjvA mAnvA hEc k{vSy sAc ||||
+jnF\ BojnF\ nAm vAc vdAv |
+atF aAdr gGoq MhZAv ||
+hrFEc\tn aà svFt jAv |
+trF FhrF pAEvjto -vBAv ||||
+n y rAm vAZF tyA Tor hAZF |
+jnF\ &amp;yT þAZF tyA nAm koZF ||
+hrFnAm h vdfA-/F prAZF |
+bh aAg boEllF &amp;yAsvAZF ||90||
+nko vFV mAn rGnAykAcA |
+atF aAdr boElj rAm vAcA ||
+n vc mKF sApX r PkAcA |
+krF Goq (yA jAnkFvSlBAcA ||91||
+atF aAdr svhF nAmGoq |
+EgrFk\drF jAIj dEr doq ||
+hrF Et¤t toqlA nAmGoq |
+Evfq hrAmAnsF rAmpFs ||92||
+jgF pAhtA dv hA aàdAtA |
+tyA lAglF tvtA sAr Ec\tA ||
+tyAc mKF nAm GtA PkAc |
+mnA sA\g pA r tJ kAy vc ||93||
+EthF kop jA fk kop ytA |
+EnvAlA h! to mK nAm GtA ||
+jp aAdr pAvtF EvmAtA |
+MhZonF MhZA tEc h nAm aAtA ||94||
+ajAm pApF vd p/kAm |
+tyA mE?t nArAyZAcEn nAm ||
+fkAkArZ k\VZF rAm vAZF |
+mK boEltA HyAEt jAlF prAZF ||95||
+mhAB?t þShAd hA d{(ykF |
+jp rAmnAmAvF En(ykAF ||
+EptA pAp!pF tyA dKvnA |
+jnF\ d{(y to nAm mK MhZnA ||96||
+mKF nAm nAhF tyA mE?t k{cF |
+ah\tAgZ yAtnA t PkAcF ||
+pY a\t yIl to d{yvAZA |
+MhZonF MhZA r MhZA dvrAZA ||97||
+hrFnAm nm-t pAqAZ tArF |
+bh tAErl mAnvF dhDArF ||
+tyA rAmnAmF sdA jo EvkSpF |
+vdnA kdA jFv to pAp!pF ||98||
+jgF Dy vArAZsF pyrAfF |
+tymAEj aAtA gtF pvjA\sF ||
+mK rAmnAmAvF En(ykAF |
+EjvA hFt sA\g sdA c\dýmOF ||99||
+yTAsA\g r km thF GXnA |
+GX Dm t pygAWF pXnA ||
+dyA pAhtA sv BtF asnA |
+PkAc mKF nAm thF vsnA ||100||
+jyA nAvX nAm (yA ym jAcF |
+EvkSp uW tk (yA nk cF cF ||
+MhZonF atF aAdr nAm ]yAv |
+mK boltA doq jAtF -vBAv ||101||
+atF lFntA svBAv -vBAv |
+jnA s&gt;jnAlAEg s\toqvAv ||
+dh kArZF sv lAvFt jAv |
+sgZF atF aAdrsF BjAv ||102||
+hrFkFtnF þFEt rAmF DrAvF |
+dhbE nF!pZF vFsrAvF ||
+prdý&amp;y aAZFk kA\tA prAvF |
+ydTF mnA sA\EX jFvF krAvF ||103||
+EyvFZ nAnAprF boEljt |
+prF Ec dE t lAjvFt ||
+mnA kSpnA DFV s{rAV DAv |
+tyA mAnvA dv k{sEn pAv ||104||
+Evvk EyA aAplF pAlVAvF |
+atF aAdr f FyA DrAvF ||
+jnF\ bolyAsAErK cAl bApA |
+mnA kSpnA soEX s\sArtApA ||105||
+brF -nAns\@yA krF ekEn¤A |
+Evvk mnA aAvrF -TAnB}£A ||
+dyA svBtF jyA mAnvAlA |
+sdA þm BE?tBAv EnvAlA ||106||
+mnA kop aAropZA t nsAvF |
+mnA bE h sADs\gF vsAvF ||
+mnA n£ cA\XA to s\g (yAgF |
+mnA hoi r mo&#034;BAgF EvBAgF ||107||
+mnA svdA s&gt;jnAcEn yog |
+EyA pAlV BE?tBAvAT lAg ||
+EyvFZ vAcAtA t EnvArF |
+tV vAd s\vAd to hFtkArF ||108||
+jnF\ vAdvvAd soXEn AvA |
+jnF\ vAds\vAd sK krAvA ||
+jgF toEc to foks\tAphArF |
+tV vAd s\vAd to hFtkArF ||109||
+tV vAd s\vAd (yAt MhZAv |
+Evvk ah\BAv yAt EjZAv ||
+ah\tAgZ vAd nAnA EvkArF |
+tV vAd s\vAd to hFtkArF ||110||
+EhtAkArZ bolZ s(y aAh |
+EhtAkArZ sv foDEn pAh ||
+EhtAkArZ b\X pAKA\X vArF |
+tV vAd s\vAd to hFtkArF ||111||
+jnF\ sA\gtA ektA jm glA |
+prF vAdvvAd t{sAEc WlA ||
+uW s\fyo vAd hA d\BDArF |
+tV vAd s\vAd to hFtkArF ||112||
+jnF\ hFt p\XFt sA\XFt gl |
+ah\tAgZ b}rA&#034;s jAl ||
+tyAhn &amp;y(pà to koZ aAh |
+mnA sv jAZFv sA\XEn rAh ||113||
+PkAc mKF boltA kAy vc |
+Eds\dFs a&lt;y\trF gv sA\c ||
+EyvFZ vAcAtA &amp;yT aAh |
+EvcAr tJA tEc foDEn pAh ||114||
+tV vAd s\vAd tT krAvA |
+EvEvk ah\BAv hA pAlVAvA ||
+jnF\ bolyAsArK aAcrAv |
+EyApAlV BE?tp\TEc jAv ||115||
+bh fAEptA k£lA a\bqF |
+tyAc -vy FhrF jm sofF ||
+EdlA &#034;FrEs\D tyA UpmAnF |
+np&#034;F kdA dv B?tAEBmAnF ||116||
+D! l\kz bApX d{yvAZ |
+kpA BAEktA dFDlF BEV jZ ||
+Ecr\jFv tArA\gZF þmKAZF |
+np&#034;F kdA dv B?tAEBmAnF ||117||
+gj\d mhAs\kVF vAs pAh |
+tyAkArZ FhrF DAvtAh ||
+uXF GAtlF jAhlA jFvdAnF |
+np&#034;F kdA dv B?tAEBmAnF ||118||
+ajAm pApF tyA a\t aAlA |
+kpApZ to jnF\ m?t klA ||
+anATAEs aADAr hA cpAZF |
+np&#034;F kdA dv B?tAEBmAnF ||119||
+EvDFkArZ jAhlA m(-y vgF |
+DrF km!p DrA p¤BAgF ||
+jnA r&#034;ZAkArZ nFc yonF |
+np&#034;F kdA dv B?tAEBmAnF ||120||
+mhAB?t þShAd hA k£vFlA |
+MhZonF tyAkArZ Es\h jAlA ||
+n y &gt;vA vFfA sàFD koZF |
+np&#034;F kdA dv B?tAEBmAnF ||121||
+kpA BAEktA jAhlA vpAZF |
+tyA kArZ vAmn cpAZF ||
+EjA\kArZ BAgv cAppAZF |
+np&#034;F kdA dv B?tAEBmAnF ||122||
+ahSystFlAgF aAryp\T |
+kXAvA pY dv b\dF tyAt ||
+b soEXtA GAv GAlF EnfAZF |
+np&#034;F kdA dv B?tAEBmAnF ||123||
+ty dýOpdFkArZ lAgvg |
+(vr DAvto sv sA\XEn mAg ||
+kFlAEg jAlA as bO mOnF |
+np&#034;F kdA dv B?tAEBmAnF ||124||
+anATA\ EdnA\kArZ jmtAh |
+kl\kF pY dv hoZAr aAh ||
+tyA vEZtA fFZlF vdvAZF |
+np&#034;F kdA dv B?tAEBmAnF ||125||
+jnA\kArZ dv lFlAvtArF |
+bhtA\prF aAdr vqDArF ||
+tyA nZtF t jn pAp!pF |
+drA(m mhAn£ cA\XA pApF ||126||
+jgF Dy to rAmmK EnvAlA |
+kTA ektA sv tSlFn jAlA ||
+dhBAvnA rAmboD uXAlF |
+mnovAsnA rAm!pF bXAlF ||127||
+mnA vAsnA vAsdvF vso d |
+mnA vAsnA kAms\gF nso d ||
+mnA kSpnA vAugF t n kFj |
+mnA s&gt;jnF\ vE-t kFj ||128||
+gtFkArZ s\gtF s&gt;jnAcF |
+mtF pAlV smtF djnAcF ||
+rtFnAEykcA ptF n£ aAh |
+MhZonF mnAtFt hovonF rAh ||129||
+mnA aSp s\kSp tohF nsAvA |
+sdA s(ys\kSp EcF vsAvA ||
+jnF\ jSp vFkSp tohF (yjAvA |
+rmAkA\t ekA\tkAF BjAvA ||130||
+BjAvA jnF\ pAhtA rAm ek |
+krF bAZ ek mKF fNd ek ||
+EyA pAhtA ur sv lok |
+DrA jAnkFnAykAcA Evvk ||131||
+EvcA!En bol Evv\cEn cAl |
+tyAcEn s\t=t thF EnvAl ||
+br foDSyAvFZ bolo nko ho |
+jnF\ cAlZ f nm-t rAho ||132||
+hrFB?t vFr?t Ev+An rAfF |
+jZ mAnsF -TAEpl EnyAsF ||
+tyA dfn -pfn py joX |
+tyA BAqZ n£ s\dh moX ||133||
+ns gv aA\gF sdA vFtrAgF |
+&#034;mA fA\Et BogF dyAd&#034; yogF ||
+ns loB nA &#034;oB nA d{yvAZA |
+ihF l&#034;ZF jAEZj yoEgrAZA ||134||
+DrF r mnA s\gtF s&gt;jnAcF |
+jZ vE h pAlV djnAcF ||
+b BAv sd^bE smAg lAg |
+mhAr to kA EvA B\g ||135||
+By &amp;yAEpl sv b}A\X aAh |
+ByAtFt t s\t aAn\t pAh ||
+jyA pAhtA {t kAhF EdsnA |
+Byo mAnsF svTAhF asnA ||136||
+EjvA ¤ t -p£ sA\goEn gl |
+prF jFv a+An t{sEc Wl ||
+dhbEc km KoV VnA |
+jn WvZ mFpZ aAknA ||137||
+B}m nAY Ev t g=t jAl |
+EjvA jmdAErdý^y WAkEn aAl ||
+dhbEcA Enyo &gt;yA VnA |
+jn WvZ mFpZ aAknA ||138||
+pY pAhtA svhF ko\dls |
+aBA`yAs h d[y pAqAZ BAs ||
+aBAv kdA py gAWF pXnA |
+jn WvZ mFpZ aAknA ||139||
+jyAc tyA ckl þA=t nAhF |
+gZ goEvl jAhl d,K dhF ||
+gZAvgF vE thF vnA |
+jn WvZ mFpZ aAknA ||140||
+MhZ dAs sAyAs (yAc krAv |
+jnF\ jAZtA pAy (yAc DrAv ||
+g! a\jnvFZ t aAknA |
+jn WvZ mFpZ aAknA ||141||
+knA knA knA YnA |
+Y nAY s\fyohF YnA ||
+gnA gnA ah\tA gnA |
+b aAknA EmnA EmnA ||142||
+aEvAgZ mAnvA UmjnA |
+B}m ckl hFt t aAknA ||
+prF&#034;EvZ bA\Dl dY nAZ |
+prF s(y EmLyA as koZ jAZ ||143||
+jgF pAhtA sAc t kAy aAh |
+atF aAdr s(y foDn pAh ||
+pY pAhtA pAhtA dv joX |
+B}m B}A\Et a+An h sv moX ||144||
+sdA vFqyo Ec\EttA jFv jAlA |
+ah\BAv a+An jmAs aAlA ||
+Evvk sdA -v-v!pF BrAv |
+EjvA UgmF jm nAhF -vBAv ||145||
+Eds locnF t ns kSpkoXF |
+ak-mAt aAkArl kA moXF ||
+pY sv jAIl kAhF n rAh |
+mnA s\t aAn\t foDEn pAh ||146||
+PVnA tVnA cnA YnA |
+sdA s\cl mFpZ t knA ||
+tyA ek!pAEs dj n sAh |
+mnA s\t aAn\t foDEn pAh ||147||
+EnrAkAr aADAr b}AEdkA\cA |
+jyA sA\gtA fFZlF vdvAcA ||
+Evvk tdAkAr hoUEn rAh |
+mnA s\t aAn\t foDEn pAh ||148||
+jgF pAhtA cmc&#034;F n l&#034; |
+jgF pAhtA +Anc&#034;F Enr&#034; ||
+jnF\ pAhtA pAhZ jAt aAh |
+mnA s\t aAn\t foDEn pAh ||149||
+ns pFt nA t nA [yAm kAhF |
+ns &amp;y?t a&amp;y?t nA nF nAhF ||
+MhZ dAs EvAstA mE?t lAh |
+mnA s\t aAn\t foDEn pAh ||150||
+Kr foEDtA foEDtA foEDtAh |
+mnA boEDtA boEDtA boEDtAh ||
+prF  svhF s&gt;jnAcEn yog |
+brA Enyo pAEvj sAnrAg ||151||
+bhtA\prF ksrF tvJAXA |
+prF a\trF pAEhj to EnvAXA ||
+mnA sAr sAcAr t vg r |
+sm-tA\mD ek t aAg r ||152||
+n&amp;h Ep\X+An n&amp;h tv+An |
+smADAn kAhF n&amp;h tAnmAn ||
+n&amp;h yogyAg n&amp;h Bog(yAg |
+smADAn t s&gt;jnAcEn yog ||153||
+mhAvA?y tvAEdk p\ckZ |
+KZ pAEvj s\ts\g EvvZ ||
+EtFyEs s\kt jo dAEvjto |
+tyA sA\XnF c\dýmA BAEvjto ||154||
+EdsnA jnF\ tcF foDEn pAh |
+br pAhtA gj tTEc aAh ||
+krF GU jAtA kdA aAYnA |
+jnF\ sv ko\dAVl t knA ||155||
+MhZ jAZtA to jnF\ mK pAh |
+atkAEs tkF asA koZ aAh ||
+jnF\ mFpZ pAhtA pAhvnA |
+tyA lE&#034;tA vg rAhvnA ||156||
+bh fA-/ D\XAEtA vAX aAh |
+jyA Enyo yk tohF n sAh ||
+mtF BA\XtF fA-/boD EvroD |
+gtF K\VtF +AnboD þboD ||157||
+tF yAy mFmA\sk tkfA-/ |
+-mtF vd vdA\tvA?y EvEc/ ||
+-vy fq mOnAvlA -TFr pAh |
+mnA sv jAZFv sA\Xn rAh ||158||
+jZ mE&#034;kA BE&#034;lF jAEZvcF |
+tyA BojnAcF zcF þA=t k{cF ||
+ah\BAv &gt;yA mAnsFcA EvrnA |
+tyA +An h aà poVF EjrnA ||159||
+nko r mnA vAd hA KdkArF |
+nko r mnA Bd nnA EvkArF ||
+nko r mnA fFkv pEYlA\sF |
+ah\BAv jo rAEhlA tjpAsF ||160.
+ah\tAgZ svhF d,K hot |
+mK boEll +An t &amp;yT jAt ||
+sKF rAhtA svhF sK aAh |
+ah\tA tJF t\cF foDn pAh ||161||
+ah\tAgZ nFEt sA\XF EvvkF |
+anFtFb [lA]ytA sv lokF ||
+prF a\trF svhF sA&#034; yt |
+þmAZA\tr bE sA\XEn jAt ||162||
+dhbEcA Enyo dY jAlA |
+dhAtFt t hFt sA\XFt glA ||
+dhbE t aA(mbE krAvF |
+sdA s\gtF s&gt;jnAcF DrAvF ||163||
+mn kESplA vFqyo soXvAvA |
+mn dv EngZ to aoKAvA ||
+mn kESptA kSpnA t srAvF |
+sdA s\gtF s&gt;jnAcF DrAvF ||164||
+dhAdFk þp\c hA Ec\EtylA |
+prF a\trF loB EnEt WlA ||
+hrFEc\tn mE?tkA\tA krAvF |
+sdA s\gtF s&gt;jnAcF DrAvF ||165||
+ah\kAr Ev-tArlA yA dhAcA |
+E-/yAp/Em/AEdk moh (yA\cA ||
+b B}A\Et h jmEc\tA hrAvF |
+sdA s\gtF s&gt;jnAcF DrAvF ||166||
+brA Enyo fAtAcA krAvA |
+MhZ dAs s\dh to vFsrAvA ||
+GXFn GXF sATkAcF DrAvF |
+sdA s\gtF s&gt;jnAcF DrAvF ||167||
+krF vF jo s\t to s\t jAZA |
+drAfAgZ jo n&amp;h d{yvAZA ||
+upADF dhbFt vAYvFt |
+prF s&gt;jnA kEv bAD fk t ||168||
+ns a\t aAn\t s\tA psAvA |
+ah\kArEv-tAr hA nFrsAvA ||
+gZvFZ EngZ to aAWvAvA |
+dhbEcA aAWv nAWvAvA ||169||
+dhbE h +AnboD (yjAvF |
+Evvk ty v-tcF BVF ]yAvF ||
+tdAkAr h vE nAhF -vBAv |
+MhZoEn sdA tEc foDFt jAv ||170||
+as sAr sAcAr t corls |
+ihF locnF pAhtA d[y BAs ||
+EnrABAs EngZ t aAknA |
+ah\tAgZ kESptAhF knA ||171||
+-Pr vFqyF kSpnA t aEvA |
+-Pr b} r jAZ mAyA sEvA ||
+mF kSpnA do zp tEc jAlF |
+Evvk trF -v-v!pF EmlF ||172||
+-v!pF udlA ah\kAr rAho |
+tZ sv aAQCAEdl &amp;yom pAho ||
+EdfA pAhtA t EnfA vAYtAh |
+Evvk EvcAr Evv\cEn pAh ||173||
+jyA c&#034;n lE&#034;tA l&#034;vnA |
+BvA BE&#034;tA rE&#034;tA r&#034;vnA ||
+&#034;yAtFt to a&#034;yF mo&#034; dto |
+dyAd&#034; to sAE&#034;n p&#034; Gto ||174||
+EvDF EnEmtF lFEhto sv BAF |
+prF lFEhtA koZ (yAc kpAF ||
+h! jAEto lok s\hArkAF |
+prF fvVF f\krA koZ jAF ||175||
+jgF AdfAEd(y h zdý aA |
+as\HyAt s\HyA krF koZ fA ||
+jgF dv D\XAEtA aAYnA |
+jgF mHy to koZ k{sA knA ||176||
+tVnA PVnA kdA dvrAZA |
+cnA YnA kdA d{yvAZA ||
+knA knA kdA locnAsF |
+vsnA EdsnA jgF mFpZAsF ||177||
+jyA mAnlA dv to pEjtAh |
+prF dv foDEn koZF n pAh ||
+jgF pAhtA dv koÔAnkoVF |
+jyA mAnlF BE?t j tEc moWF ||178||
+EthF lok jTEn EnmAZ JAl |
+tyA dvrAyAEs koZF n bol ||
+jgF TorlA dv to corlAs |
+g!vFZ to svTAhF n dFs ||179||
+gz pAhtA pAhtA l&#034; koVF |
+bhsAl m\/AvF fE?t moWF ||
+mnF kAmnA cVk DAtmAtA |
+jnF\ &amp;yT r to n&amp;h mE?tdAtA ||180||
+n&amp;h cVkF cAk dý&amp;yBo\d |
+n&amp;h En\dk m(s! BE?tm\d ||
+n&amp;h umt vsnF s\gbAD |
+jnF\ +AEnyA toEc sAD agAD ||181||
+n&amp;h vAugF cAhVF kAm poVF |
+EyvFZ vAcAtA tEc moWF ||
+mK boElSyAsArK cAltAh |
+mnA sd^g! toEc foDEn pAh ||182||
+jnF\ B?t +AnF EvvkF EvrAgF |
+kpA mn-vF &#034;mAv\t yogF ||
+þB d&#034; &amp;y(pà cAty jAZ |
+tyAcEn yog smADAn bAZ ||183||
+n&amp;h toEc jAl ns tEc aAl |
+ko lAgl s&gt;jnAcEn bol ||
+aEnvAQy t vAQy vAc vdAv |
+mnA s\t aAn\t foDFt jAv ||184||
+lpAv atF aAdr rAm!pF |
+ByAtFt EnFt y -v-v!pF ||
+kdA to jnF\ pAhtAhF EdsnA |
+sdA e?y to EBàBAv vsnA ||185||
+sdA svdA rAm sàFD aAh |
+mnA s&gt;jnA s(y foDn pAh ||
+aK\XFt BVF rGrAjyog |
+mnA sA\EX r mFpZAcA Evyog ||186||
+Bt Ep\X b}A\X h e?y aAh |
+prF svhF -v-v!pF n sAh ||
+mnA BAsl sv kAhF phAv |
+prF s\g soXEn sKF rhAv ||187||
+dhBAn h +Anf-/ KXAv |
+EvdhFpZ BE?tmAgEc jAv ||
+Evr?tFb En\ sv{ (yjAv |
+prF s\g soXEn sK rhAv ||188||
+mhF EnEmlF dv to aoKAvA |
+jyA pAhtA mo&#034; t(kA jFvA ||
+tyA EngZAlAgF gZF phAv |
+prF s\g soXEn sKF rhAv ||189||
+n&amp;h kAyktA n&amp;h sE£BtA |
+prhn ptA n El\p EvvtA ||
+tyA EnEvkSpAEs kSpFt jAv |
+prF s\g soXEn sKF rhAv ||190||
+dhbEcA Enyo jyA YnA |
+tyA +An\-kSpA\tkAF knA ||
+prb} t mFpZ aAknA |
+mnF fy a+An h mAvnA ||191||
+mnA nA k nA Y !p &gt;yAc |
+djvFZ t @yAn svomAc ||
+tyA KZ t hFn d£A\t pAh |
+tT s\g En,s\g dohF n sAh ||192||
+n&amp;h jAZtA nZtA dvrAZA |
+n y vEZtA vdfA-/A prAZA ||
+n&amp;h d[y ad[y sA&#034;F tyAcA |
+tF nZtF nZtF a\t (yAcA ||193||
+vs ãdyF dv to koZ k{sA |
+ps aAdr sADk þ[n esA ||
+dh VAEktA dv koW phAto |
+prF mAgtA WAv koW rhAto ||194||
+vs ãdyF dv to jAZ esA |
+-&lt;--cprF &amp;yApk jAZ t{sA ||
+sdA s\clA yt nA jAt kAhF |
+tyAvFZ koW ErtA WAv nAhF ||195||
+nBF vAvr jA aZrZ kAhF |
+ErtA WAv yA rAGvvFZ nAhF ||
+tyA pAhtA pAhtA toEc jAl |
+tT l&#034; aAl&#034; sv bXAl ||196||
+nBAsAErK !p yA rAGvAc |
+mnF Ec\EttA m tV BvAc ||
+tyA pAhtA dhbE urnA |
+sdA svdA aAt poVF prnA ||197||
+nB &amp;yAEpl sv s£Fs aAh |
+rGnAykA UpmA t n sAh ||
+djvFZ jo toEc to hA -vBAv |
+tyA &amp;yApk &amp;yT k{s MhZAv ||198||
+atF jFZ Ev-tFZ t !p aAh |
+tT tk s\pk tohF n sAh ||
+atF gY t d[y t(kA sop |
+djvFZ j KZ -vAEmþtAp ||199||
+k aAk !p t +An hotA |
+tT aAVlF svsA&#034;F av-TA ||
+mnA umnF fNd k\WFt rAh |
+to r toEc to rAm sv/ pAh ||200||
+kdA aoKFmAEj dj EdsnA |
+mnF mAnsF {t kAhF vsnA ||
+bhtA\ EdsA\ aAplF BEV jAlF |
+EvdhFpZ sv kAyA EnvAlF ||201||
+mnA gj r tj h þA=t JAl |
+prF a\trF pAEhj y(n kl ||
+sdA vZ pAEvj EnyAsF |
+DrF s&gt;jns\gtF Dy hosF ||202||
+mnA svhF s\g soXEn AvA |
+atF aAdr s&gt;jnAcA DrAvA ||
+jyAcEn s\g mhAd,K B\g |
+jnF\ sADnvFZ smAg lAg ||203||
+mnA s\g hA svs\gAs toXF |
+mnA s\g hA mo&#034; tA(kA joXF ||
+mnA s\g hA sADnA fFG} soXF |
+mnA s\g hA {t En,fq moXF ||204||
+mnAcF ft ektA doq jAtF |
+mtFm\d t sADnA yo`y hotF ||
+cY +An v{rA`y sAmLy a\gF |
+MhZ dAs EvAstA mE?t BogF ||205||
+
+
+mnoboDAcF aArtF
+vdA\c\ j\ g fA-/A\c\ j\ sAr | 
+þAkt fNdA\mAjF klA Ev-tAr | 
+km upAsnA +An g\BFr | 
+&gt;yAQyA mnnmA/\ aA(mA gocr ||
+jy dv jy dv jy mnoboDA | 
+p\cþAZ\ aArEt tj -vA(mfA ||
+jy dv jy dv ||
+
+don ft\ pA\c [lok h jAZ | 
+vZ\ aT\ sADk pAvEt h KZ ||
+prmATAsF slB mAg hA pZ | 
+yfv\t sz dAsAcA þAZ ||
+jy dv jy dv ||
+       
+\fransdvng
+||jy jy rGvFr smT ||
+
+\fransdvng<,r>\parindent=0pt
+ Please send corrections to Sunder Hattangadi \fransdvng( sunderh@hotmail.com\fransdvng) 
+ Last updated on \today
+
+
+</FONT></PRE><PRE><FONT SIZE=1><P><HR>
+</FONT></PRE><HR><P>
+This page uses Unicode utf-8 encoding for devanagari.  Please set the fonts and 
+languages setting in your web browser to display the correct Unicode font. 
+Some help is available at <a
+href=http://www.ee.adfa.edu.au/staff/hrp/personal/Sanskrit-External/unicodenotes.html>Notes
+on Viewing and Creating Devanagari Documents with Unicode Support.  </a>
+Some of the Unicode fonts for Devanagari are linked at <a
+href=http://devanaagarii.net>http://devanaagarii.net</a> and for 
+Sanskrit Transliteration/Diacritics are available at <a
+href="http://bombay.indology.info/software/fonts/induni/index.html">IndUni
+Fonts</a>.<P>
+
+Questions, comments? Write to <A
+href="mailto:sanskrit@cheerful.com?subject=UnicodeSanskritDocuments">sanskrit@cheerful.com</A> .
+<P>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write(document.lastModified,'&nbsp;&nbsp;&nbsp;&nbsp;<BR>');
+//SCRIPT_END -->
+</SCRIPT>
+</BODY>
+</HTML>
